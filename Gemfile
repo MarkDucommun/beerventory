@@ -46,6 +46,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'capybara-angular'
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'
 
   # Debugging stuff
   gem 'pry-rails'
