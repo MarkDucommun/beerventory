@@ -2,6 +2,10 @@
   "name": "dsl-generated dependencies",
   "dependencies": {
     "jquery": "latest",
-    "angular": "latest"
+    "underscore": "latest",
+    "angular": "latest",
+    "angular-resource": "latest",
+    "angular-route": "latest",
+    "angular-underscore": "latest"
   }
 }
