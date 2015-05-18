@@ -32,4 +32,14 @@ describe Api::V1::BreweriesController do
       expect(brewery_json[:brewery][:id]).to_not be nil
     end
   end
+
+  describe '#update' do
+    it 'updates the brewery record and returns the updated brewery record' do
+      brewery = create(:brewery)
+      new_name = 'A New Name'
+      put :update, id: brewery.id, brewery: {name: new_name}
+      brewery_json = JSON.parse(response.body).with_indifferent_access
+      expect(brewery_json[:brewery][:name]).to eq new_name
+    end
+  end
 end
