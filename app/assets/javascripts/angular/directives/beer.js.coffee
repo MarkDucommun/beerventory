@@ -16,8 +16,7 @@
       scope.editting = false
       scope.notEditting = true
 
-    scope.save = ->
+    scope.afterSave = (beer) ->
       scope.editting = false
       scope.notEditting = true
-      scope.beer.save().then (beer) ->
-        scope.beer = beer
+      scope.beer = beer
