@@ -10,6 +10,11 @@
   $locationProvider
 ) ->
 
+  # Handle Rails attempting to reload page
+  $routeProvider.when '/',
+    redirectTo: (current, path, search) ->
+      if search.goto then search.goto else '/beers'
+
   $routeProvider.when '/beers',
     templateUrl: 'views/beers.html'
     controller: 'BeersController'
@@ -21,4 +26,4 @@
   $routeProvider.otherwise
     redirectTo: '/beers'
 
-  $locationProvider.html5Mode(false);
+  $locationProvider.html5Mode(true);
