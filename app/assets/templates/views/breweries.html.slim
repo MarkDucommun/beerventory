@@ -1,3 +1,8 @@
 #new-brewery (ng-controller='NewBreweryController')
   h2 Input a new brewery
   brewery-form (brewery='newBrewery' after-save='afterSave(brewery)')
+
+#all-breweries
+  h2 Breweries
+  div (ng-repeat='brewery in breweries')
+    brewery (instance='brewery')

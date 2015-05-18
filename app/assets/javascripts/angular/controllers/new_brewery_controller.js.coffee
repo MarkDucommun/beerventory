@@ -6,4 +6,5 @@
   $scope.newBrewery = Brewery.new()
 
   $scope.afterSave = (brewery) ->
+    $scope.breweries.push(brewery)
     $scope.newBrewery = Brewery.new()

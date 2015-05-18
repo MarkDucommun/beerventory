@@ -1,0 +1,11 @@
+div (ng-click='edit()' ng-if='notEditting')
+  .brewery-details
+    span.name> {{ brewery.name }} -
+    span.city> {{brewery.city}},
+    span.state {{brewery.state}}
+
+div (ng-if='editting')
+  brewery-form (brewery='brewery' after-save='afterSave(brewery)')
+  input (type='button' ng-click='cancel()' value='Cancel')
+
+br
