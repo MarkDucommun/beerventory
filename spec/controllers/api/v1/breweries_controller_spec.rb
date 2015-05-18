@@ -1,6 +1,15 @@
 require 'rails_helper'
 
 describe Api::V1::BreweriesController do
+  describe '#index' do
+    it 'returns all brewery records' do
+      breweries = create_list(:brewery, 2)
+      get :index
+      breweries_json = JSON.parse(response.body).with_indifferent_access
+      expect(breweries_json[:breweries].length).to be breweries.length
+    end
+  end
+
   describe '#create' do
     let(:name) { 'Test Brewery' }
     let(:city) { 'Chicago' }

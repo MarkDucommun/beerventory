@@ -1,6 +1,10 @@
 class Api::V1::BreweriesController < Api::V1::ApiController
   expose(:brewery)
 
+  def index
+    render json: Brewery.all
+  end
+
   def create
     render json: Brewery.create(brewery_params)
   end
