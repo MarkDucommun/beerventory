@@ -1,0 +1,21 @@
+div (ng-click='edit()' ng-if='notEditting')
+  .beer-details
+    .name {{ beer.name }}
+
+    .bottling-date (ng-if='beer.bottling_date')
+      span Bottled: {{ beer.bottling_date | date: 'MMM d, yyyy' }}
+
+    .purchase-date (ng-if='beer.purchase_date')
+      span Purchased: {{ beer.purchase_date | date: 'MMM d, yyyy' }}
+
+    .best-by-date (ng-if='beer.best_by_date')
+      span Best By: {{ beer.best_by_date | date: 'MMM d, yyyy' }}
+
+  input (type='button' ng-click='delete(beer)' value='X')
+
+div (ng-if='editting')
+  beer-form ( beer='beer' save='save()')
+
+  input (type='button' ng-click='cancel()' value='Cancel')
+
+br
