@@ -5,7 +5,6 @@
 
   $scope.newBeer = Beer.new()
 
-  $scope.saveNewBeer = ->
-    $scope.newBeer.save().then (beer) ->
-      $scope.beers.push(beer)
-      $scope.newBeer = Beer.new()
+  $scope.afterSave = (beer) ->
+    $scope.beers.push(beer)
+    $scope.newBeer = Beer.new()

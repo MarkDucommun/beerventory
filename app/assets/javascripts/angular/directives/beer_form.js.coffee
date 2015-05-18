@@ -2,7 +2,7 @@
   restrict: 'E'
   scope:
     beer: '='
-    save: '&'
+    afterSave: '&'
   templateUrl: 'directives/beer_form.html'
   link: (scope, element, attrs) ->
       scope.$watch 'beer', ->
@@ -14,5 +14,6 @@
           required: -> this.field.$dirty && this.field.$error.required
 
       scope.saveForm = ->
-        scope.save()
+        scope.beer.save().then (beer) ->
+          scope.afterSave(beer: beer)
         scope.beerForm.$setPristine()

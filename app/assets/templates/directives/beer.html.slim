@@ -11,10 +11,10 @@ div (ng-click='edit()' ng-if='notEditting')
     .best-by-date (ng-if='beer.best_by_date')
       span Best By: {{ beer.best_by_date | date: 'MMM d, yyyy' }}
 
-  input (type='button' ng-click='delete(beer)' value='X')
+  input (type='button' ng-click='delete({beer: beer})' value='X')
 
 div (ng-if='editting')
-  beer-form ( beer='beer' save='save()')
+  beer-form (beer='beer')
 
   input (type='button' ng-click='cancel()' value='Cancel')
 
