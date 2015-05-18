@@ -2,6 +2,7 @@
   restrict: 'E'
   scope:
     brewery: '=instance'
+    delete: '&'
   templateUrl: 'directives/brewery.html'
   link: (scope, element, attrs) ->
     scope.notEditting = true

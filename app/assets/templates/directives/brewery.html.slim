@@ -8,4 +8,6 @@ div (ng-if='editting')
   brewery-form (brewery='brewery' after-save='afterSave(brewery)')
   input (type='button' ng-click='cancel()' value='Cancel')
 
+input (type='button' ng-click='delete({brewery: brewery})' value='Delete')
+
 br

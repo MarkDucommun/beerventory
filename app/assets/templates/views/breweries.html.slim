@@ -5,4 +5,4 @@
 #all-breweries
   h2 Breweries
   div (ng-repeat='brewery in breweries')
-    brewery (instance='brewery')
+    brewery (instance='brewery' delete='deleteBrewery(brewery)')
