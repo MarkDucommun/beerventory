@@ -1,14 +1,15 @@
 class Api::V1::BreweriesController < Api::V1::ApiController
   def create
-    Brewery.create(brewery_params)
-    render nothing: true
+    render json: Brewery.create(brewery_params)
   end
 
   private
 
   def brewery_params
     params.require(:brewery).permit(
-      :name
+      :name,
+      :city,
+      :state
     )
   end
 end
