@@ -42,4 +42,21 @@ describe Api::V1::BreweriesController do
       expect(brewery_json[:brewery][:name]).to eq new_name
     end
   end
+
+  describe '#delete' do
+    let!(:brewery) { create(:brewery) }
+
+    it 'destroys the brewery record' do
+      expect {
+        delete :destroy, id: brewery.id
+      }.to change(Brewery, :count).by(-1)
+    end
+
+    it 'returns the destroyed brewery record' do
+      delete :destroy, id: brewery.id
+      brewery_json = JSON.parse(response.body).with_indifferent_access
+      expect(brewery_json[:brewery][:id]).to eq brewery.id
+      expect(brewery_json[:brewery][:name]).to eq brewery.name
+    end
+  end
 end

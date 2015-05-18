@@ -10,6 +10,10 @@ class Api::V1::BreweriesController < Api::V1::ApiController
     render json: brewery
   end
 
+  def destroy
+    render json: brewery.destroy
+  end
+
   private
 
   def brewery_params
