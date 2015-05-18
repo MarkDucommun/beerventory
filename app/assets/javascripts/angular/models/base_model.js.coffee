@@ -53,7 +53,7 @@
       constructor = this
       deferred = $q.defer()
       success = (response) ->
-        instance = constructor.new(response.data['beer'])
+        instance = constructor.new(response.data[constructor.type_single()])
         LocalCollection.add(instance)
         deferred.resolve(instance)
       failure = (response) ->
@@ -65,7 +65,7 @@
       constructor = this
       deferred = $q.defer()
       success = (response) ->
-        collection = constructor.newCollection(response.data['beers'])
+        collection = constructor.newCollection(response.data[constructor.type_plural()])
         LocalCollection.addCollection(collection)
         deferred.resolve(collection)
       failure = (response) -> deferred.reject(response.data)
