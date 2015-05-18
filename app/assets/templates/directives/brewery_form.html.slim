@@ -1,0 +1,16 @@
+form (name='breweryForm' ng-submit='saveForm()')
+  .name-field
+    label> (for='name') Name
+    input (name='name' type='text' ng-model='brewery.name' required)
+    label.error< (for='name' ng-if='name.required()') Required
+
+  .city-field
+    label> (form='city') City
+    input (name='city' type='text' ng-model='brewery.city')
+
+  .state-field
+    label> (form='state') State
+    input (name='state' type='text' ng-model='brewery.state')
+
+  .submit
+    input (type='submit' value='Save' ng-disable='breweryForm.$invalid')
