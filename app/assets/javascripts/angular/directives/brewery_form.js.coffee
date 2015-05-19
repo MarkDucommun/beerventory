@@ -1,4 +1,6 @@
-@beer.directive 'breweryForm', ->
+@beer.directive 'breweryForm', (
+  Validations
+) ->
   restrict: 'E'
   scope:
     brewery: '='
@@ -11,7 +13,7 @@
     scope.$watch 'breweryForm', ->
       scope.name =
         field: scope.breweryForm.name
-        required: -> this.field.$dirty && this.field.$error.required
+        required: -> Validations.required(this.field)
 
     scope.saveForm = ->
       scope.brewery.save().then (brewery) ->
