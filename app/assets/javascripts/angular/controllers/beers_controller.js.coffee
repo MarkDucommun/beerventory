@@ -1,13 +1,13 @@
-@beerventory.controller 'BeersController', (
+@beerventory.controller 'UnitsController', (
   $scope,
-  Beer
+  Unit
 ) ->
 
-  $scope.beers = []
+  $scope.units = []
 
-  Beer.index().then (beers) ->
-    $scope.beers = beers
+  Unit.index().then (units) ->
+    $scope.units = units
 
-  $scope.deleteBeer = (beer) ->
-    beer.delete().then (deletedBeer) ->
-      $scope.beers = _.without($scope.beers, _.findWhere($scope.beers, id: deletedBeer.id))
+  $scope.deleteUnit = (unit) ->
+    unit.delete().then (deletedUnit) ->
+      $scope.units = _.without($scope.units, _.findWhere($scope.units, id: deletedUnit.id))

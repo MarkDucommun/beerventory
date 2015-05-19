@@ -15,3 +15,11 @@
       volume: this.volume
       volume_unit: this.volume_unit
       name: this.name
+
+    description: -> "#{this.volume} #{this.volume_unit} #{this.type}"
+
+    label: ->
+      if this.name
+        "#{this.name} (#{this.description()})"
+      else
+        this.description()

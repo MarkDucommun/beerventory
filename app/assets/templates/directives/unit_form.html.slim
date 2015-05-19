@@ -1,0 +1,22 @@
+form (name='unitForm' ng-submit='saveForm()' novalidate)
+  .container-field
+    label> (for='container') Container
+    / input (name='container' type='text' ng-model='unit.container' required)
+    select (name='container' ng-model='unit.container' required
+      ng-options="container as container.label() for container in containers track by container.id")
+    label.error< (for='container' ng-if='container.required()') Required
+
+  .bottling-date-field
+    label> (for='bottling_date') Bottled
+    input (name='bottling_date' type='date' ng-model='unit.bottling_date')
+
+  .purchase-date-field
+    label> (for='purchase_date') Purchased
+    input (name='purchase_date' type='date' ng-model='unit.purchase_date')
+
+  .best-by-date-field
+    label> (for='best_by_date') Best By
+    input (name='best_by_date' type='date' ng-model='unit.best_by_date')
+
+  .submit
+    input (type='submit' value='Save' ng-disable='unitForm.$invalid')

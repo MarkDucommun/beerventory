@@ -1,9 +1,9 @@
-@beerventory.directive 'beer', ->
+@beerventory.directive 'unit', ->
   restrict: 'E'
   scope:
-    beer: '=instance'
+    unit: '=instance'
     delete: '&'
-  templateUrl: 'directives/beer.html'
+  templateUrl: 'directives/unit.html'
   link: (scope, element, attrs) ->
     scope.notEditting = true
     scope.editting = false
@@ -16,7 +16,7 @@
       scope.editting = false
       scope.notEditting = true
 
-    scope.afterSave = (beer) ->
+    scope.afterSave = (unit) ->
       scope.editting = false
       scope.notEditting = true
-      scope.beer = beer
+      scope.unit = unit

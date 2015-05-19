@@ -1,0 +1,8 @@
+#new-unit (ng-controller='NewUnitController')
+  h2 Input a new unit
+  unit-form (unit='newUnit' after-save='afterSave(unit)')
+
+#all-unit
+  h2 Units
+  div (ng-repeat='unit in units')
+    unit (instance='unit' delete='deleteUnit(unit)')
