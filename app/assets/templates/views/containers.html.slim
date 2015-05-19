@@ -1,3 +1,8 @@
 #new-container (ng-controller='NewContainerController')
   h2 Input a new container
   container-form (container='newContainer' after-save='afterSave(container)')
+
+#all-containers
+  h2 Containers
+  div (ng-repeat='container in containers')
+    container (instance='container' delete='deleteContainer(container)')

@@ -27,4 +27,4 @@
     scope.saveForm = ->
       scope.container.save().then (container) ->
         scope.afterSave(container: container)
-      scope.containerForm.$setPristine
+      scope.containerForm.$setPristine()
