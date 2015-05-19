@@ -5,8 +5,8 @@ describe Api::V1::BeersController do
     it 'returns all beer records' do
       beers = create_list(:beer, 2)
       get :index
-      beers_json = JSON.parse(response.body).with_indifferent_access
-      expect(beers_json[:beers].length).to be beers.length
+      beers_hash = parse_json_response_body(response).fetch(:beers)
+      expect(beers_hash.length).to be beers.length
     end
   end
 
@@ -31,13 +31,14 @@ describe Api::V1::BeersController do
       }.to change(Beer, :count).by 1
     end
 
-    it 'should return a serialized version of the new Beer record' do
+    it 'returns a serialized version of the new Beer record' do
       post :create, beer: full_beer_params
-      beer_json = JSON.parse(response.body).with_indifferent_access
-      expect(beer_json[:beer][:name]).to eq name
-      expect(beer_json[:beer][:bottling_date]).to_not be nil
-      expect(beer_json[:beer][:purchase_date]).to_not be nil
-      expect(beer_json[:beer][:best_by_date]).to_not be nil
+      beer_hash = parse_json_response_body(response).fetch(:beer)
+      expect(beer_hash[:id]).to_not be_nil
+      expect(beer_hash[:name]).to eq name
+      expect(beer_hash[:bottling_date]).to_not be nil
+      expect(beer_hash[:purchase_date]).to_not be nil
+      expect(beer_hash[:best_by_date]).to_not be nil
     end
   end
 
@@ -46,8 +47,8 @@ describe Api::V1::BeersController do
       beer = create(:beer)
       new_name = 'A New Name'
       put :update, id: beer.id, beer: {name: new_name}
-      beer_json = JSON.parse(response.body).with_indifferent_access
-      expect(beer_json[:beer][:name]).to eq new_name
+      beer_hash = parse_json_response_body(response).fetch(:beer)
+      expect(beer_hash[:name]).to eq new_name
     end
   end
 
@@ -62,9 +63,9 @@ describe Api::V1::BeersController do
 
     it 'returns the destroyed beer record' do
       delete :destroy, id: beer.id
-      beer_json = JSON.parse(response.body).with_indifferent_access
-      expect(beer_json[:beer][:id]).to eq beer.id
-      expect(beer_json[:beer][:name]).to eq beer.name
+      beer_hash = parse_json_response_body(response).fetch(:beer)
+      expect(beer_hash[:id]).to eq beer.id
+      expect(beer_hash[:name]).to eq beer.name
     end
   end
 end
