@@ -34,7 +34,7 @@ gem 'pundit'
 gem 'bcrypt', '~> 3.1.7'
 
 # Serializers
-gem 'active_model_serializers'
+gem 'active_model_serializers', '~> 0.8.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
