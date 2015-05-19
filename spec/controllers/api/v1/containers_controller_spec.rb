@@ -1,6 +1,15 @@
 require 'rails_helper'
 
 describe Api::V1::ContainersController do
+  describe '#index' do
+    it 'returns all container records' do
+      containers = create_list(:container, 2)
+      get :index
+      containers_hash = parse_json_response_body(response).fetch(:containers)
+      expect(containers_hash.length).to be containers.length
+    end
+  end
+
   describe '#create' do
     let(:type) { 'Bottle' }
     let(:volume) { 750 }

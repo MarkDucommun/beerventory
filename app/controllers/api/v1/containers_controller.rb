@@ -1,4 +1,8 @@
 class Api::V1::ContainersController < Api::V1::ApiController
+  def index
+    render json: Container.all
+  end
+
   def create
     render json: Container.create(container_params)
   end
