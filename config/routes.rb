@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :beers
       resources :breweries
       resources :containers
+      resources :units
     end
   end
 

@@ -1,7 +1,8 @@
-class BeerSerializer < ActiveModel::Serializer
+class UnitSerializer < ActiveModel::Serializer
   attributes :id,
-             :name,
              :bottling_date,
              :purchase_date,
              :best_by_date
+
+  has_one :container
 end
