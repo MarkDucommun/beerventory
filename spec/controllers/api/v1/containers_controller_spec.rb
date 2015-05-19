@@ -44,4 +44,14 @@ describe Api::V1::ContainersController do
       expect(container_hash[:name]).to eq name
     end
   end
+
+  describe '#update' do
+    it 'updates the container record and returns the updated beer record' do
+      container = create(:container)
+      new_name = 'A new name'
+      put :update, id: container.id, container: {name: new_name}
+      container_hash = parse_json_response_body(response).fetch(:container)
+      expect(container_hash[:name]).to eq new_name
+    end
+  end
 end
