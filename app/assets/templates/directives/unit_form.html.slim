@@ -1,7 +1,6 @@
 form (name='unitForm' ng-submit='saveForm()' novalidate)
   .container-field
     label> (for='container') Container
-    / input (name='container' type='text' ng-model='unit.container' required)
     select (name='container' ng-model='unit.container' required
       ng-options="container as container.label() for container in containers track by container.id")
     label.error< (for='container' ng-if='container.required()') Required

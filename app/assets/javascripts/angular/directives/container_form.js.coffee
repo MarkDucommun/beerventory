@@ -7,6 +7,16 @@
     afterSave: '&'
   templateUrl: 'directives/container_form.html'
   link: (scope, element, attrs) ->
+    scope.types = [
+      'Bottle'
+      'Can'
+    ]
+
+    scope.volume_units = [
+      'oz'
+      'ml'
+    ]
+
     scope.$watch 'container', ->
       alert('ERROR: NOT A CONTAINER') if scope.container.constructor.name != 'Container'
 

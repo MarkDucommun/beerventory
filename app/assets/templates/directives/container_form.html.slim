@@ -1,23 +1,22 @@
 form (name='containerForm' ng-submit='saveForm()' novalidate)
+  .name-field
+    label> (for='name') Name
+    input (name='name' type='text' ng-model='container.name')
+
   .type-field
     label> (for='type') Type
-    input (name='type' type='text' ng-model='container.type' required)
+    select (name='type' ng-model='container.type' required
+      ng-options="type as type for type in types")
     label.error< (for='type' ng-if='type.required()') Required
 
   .volume-field
     label> (for='volume') Volume
     input (name='volume' type='number' ng-model='container.volume' required)
+    select (name='volume_unit' ng-model='container.volume_unit' required
+      ng-options="volume_unit as volume_unit for volume_unit in volume_units")
     label.error<> (for='volume' ng-if='volume.required()') Required
     label.error< (for='volume' ng-if='volume.number()') Must be a number
-
-  .volume-unit-field
-    label> (for='volume_unit') Volume Unit
-    input (name='volume_unit' type='text' ng-model='container.volume_unit' required)
     label.error< (for='volume_unit' ng-if='volume_unit.required()') Required
-
-  .name-field
-    label> (for='name') Name
-    input (name='name' type='text' ng-model='container.name')
 
   .submit
     input (type='submit' value='Save' ng-disable='containerForm.$invalid')
