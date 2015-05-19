@@ -54,4 +54,21 @@ describe Api::V1::ContainersController do
       expect(container_hash[:name]).to eq new_name
     end
   end
+
+  describe '#destroy' do
+    let!(:container) { create(:container) }
+
+    it 'destroys the container record' do
+      expect {
+        delete :destroy, id: container.id
+      }.to change(Container, :count).by(-1)
+    end
+
+    it 'returns the destroyed container record' do
+      delete :destroy, id: container.id
+      container_hash = parse_json_response_body(response).fetch(:container)
+      expect(container_hash[:id]).to eq container.id
+      expect(container_hash[:name]).to eq container.name
+    end
+  end
 end

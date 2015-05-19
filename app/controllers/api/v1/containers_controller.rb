@@ -14,6 +14,10 @@ class Api::V1::ContainersController < Api::V1::ApiController
     render json: container
   end
 
+  def destroy
+    render json: container.destroy
+  end
+
   private
 
   def container_params
