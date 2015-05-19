@@ -46,7 +46,7 @@ describe Api::V1::ContainersController do
   end
 
   describe '#update' do
-    it 'updates the container record and returns the updated beer record' do
+    it 'updates the container record and returns the updated container record' do
       container = create(:container)
       new_name = 'A new name'
       put :update, id: container.id, container: {name: new_name}
