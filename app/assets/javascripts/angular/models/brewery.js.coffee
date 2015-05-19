@@ -1,4 +1,4 @@
-@beer.factory 'Brewery', (
+@beerventory.factory 'Brewery', (
   BaseModel
 ) ->
 

@@ -1,4 +1,4 @@
-@beer.directive 'brewery', ->
+@beerventory.directive 'brewery', ->
   restrict: 'E'
   scope:
     brewery: '=instance'

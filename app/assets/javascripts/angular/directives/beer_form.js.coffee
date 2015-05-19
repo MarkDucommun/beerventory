@@ -1,4 +1,4 @@
-@beer.directive 'beerForm', (
+@beerventory.directive 'beerForm', (
   Validations
 ) ->
   restrict: 'E'

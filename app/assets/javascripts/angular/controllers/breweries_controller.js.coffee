@@ -1,4 +1,4 @@
-@beer.controller 'BreweriesController', (
+@beerventory.controller 'BreweriesController', (
   $scope,
   Brewery
 ) ->

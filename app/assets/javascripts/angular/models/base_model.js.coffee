@@ -1,4 +1,4 @@
-@beer.factory 'BaseModel', (
+@beerventory.factory 'BaseModel', (
   BeerventoryApi,
   LocalCollection,
   $q

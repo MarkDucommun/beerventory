@@ -1,4 +1,4 @@
-@beer.service 'Validations', ->
+@beerventory.service 'Validations', ->
   required: (field) ->
     field.$dirty && field.$error.required
 

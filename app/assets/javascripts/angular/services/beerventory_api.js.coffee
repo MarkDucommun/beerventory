@@ -1,4 +1,4 @@
-@beer.service 'BeerventoryApi', (
+@beerventory.service 'BeerventoryApi', (
   $http
 ) ->
 

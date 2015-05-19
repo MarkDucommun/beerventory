@@ -1,4 +1,4 @@
-@beer.service 'LocalCollection', (
+@beerventory.service 'LocalCollection', (
   $q
 ) ->
 

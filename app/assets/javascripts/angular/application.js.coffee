@@ -1,11 +1,11 @@
-@beer = angular.module 'beerventory', [
+@beerventory = angular.module 'beerventory', [
   'ngResource',
   'ngRoute',
   'angular-underscore',
   'templates'
 ]
 
-@beer.config (
+@beerventory.config (
   $routeProvider,
   $locationProvider
 ) ->
