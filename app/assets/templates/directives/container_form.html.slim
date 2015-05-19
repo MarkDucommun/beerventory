@@ -1,0 +1,23 @@
+form (name='containerForm' ng-submit='saveForm()' novalidate)
+  .type-field
+    label> (for='type') Type
+    input (name='type' type='text' ng-model='container.type' required)
+    label.error< (for='type' ng-if='type.required()') Required
+
+  .volume-field
+    label> (for='volume') Volume
+    input (name='volume' type='number' ng-model='container.volume' required)
+    label.error<> (for='volume' ng-if='volume.required()') Required
+    label.error< (for='volume' ng-if='volume.number()') Must be a number
+
+  .volume-unit-field
+    label> (for='volume_unit') Volume Unit
+    input (name='volume_unit' type='text' ng-model='container.volume_unit' required)
+    label.error< (for='volume_unit' ng-if='volume_unit.required()') Required
+
+  .name-field
+    label> (for='name') Name
+    input (name='name' type='text' ng-model='container.name')
+
+  .submit
+    input (type='submit' value='Save' ng-disable='beerForm.$invalid')

@@ -1,0 +1,3 @@
+@beer.controller 'ContainersController', (
+  $scope
+) ->

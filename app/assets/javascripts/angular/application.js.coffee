@@ -23,6 +23,10 @@
     templateUrl: 'views/breweries.html'
     controller: 'BreweriesController'
 
+  $routeProvider.when '/containers',
+    templateUrl: 'views/containers.html'
+    controller: 'ContainersController'
+
   $routeProvider.otherwise
     redirectTo: '/beers'
 
