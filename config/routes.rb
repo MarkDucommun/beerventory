@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :beers
       resources :breweries
       resources :containers
+      resources :locations
       resources :units
     end
   end
