@@ -1,4 +1,10 @@
 form (name='unitForm' ng-submit='saveForm()' novalidate)
+  .beer-field
+    label> (for='beer') Beer
+    select (name='beer' ng-model='unit.beer' required
+      ng-options="beer as beer.label() for beer in beers track by beer.id")
+    label.error< (for='beer' ng-if='beer.required()') Required
+
   .container-field
     label> (for='container') Container
     select (name='container' ng-model='unit.container' required

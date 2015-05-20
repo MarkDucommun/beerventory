@@ -1,5 +1,6 @@
 @beerventory.directive 'unitForm', (
   Validations,
+  Beer,
   Container
 ) ->
   restrict: 'E'
@@ -8,7 +9,11 @@
     afterSave: '&'
   templateUrl: 'directives/unit_form.html'
   link: (scope, element, attrs) ->
+      scope.beers = []
       scope.containers = []
+
+      Beer.index().then (beers) ->
+        scope.beers = beers
 
       Container.index().then (containers) ->
         scope.containers = containers
@@ -17,6 +22,10 @@
         alert('ERROR: NOT A UNIT') if scope.unit.constructor.name != 'Unit'
 
       scope.$watch 'unitForm', ->
+        scope.beer =
+          field: scope.unitForm.beer
+          required: -> Validations.required(this.field)
+
         scope.container =
           field: scope.unitForm.container
           required: -> Validations.required(this.field)

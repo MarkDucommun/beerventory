@@ -1,5 +1,9 @@
 div (ng-click='edit()' ng-if='notEditting')
   .unit-details
+    .beer {{ unit.beer.name }}
+
+    .brewery {{ unit.beer.brewery.label() }}
+
     .container {{ unit.container.label() }}
 
     .bottling-date (ng-if='unit.bottling_date')
