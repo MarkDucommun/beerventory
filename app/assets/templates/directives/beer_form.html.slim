@@ -1,0 +1,14 @@
+form (name='beerForm' ng-submit='saveForm()' novalidate)
+  .name-field
+    label> (for='name') Name
+    input (name='name' type='text' ng-model='beer.name' required)
+    label.error< (for='name' ng-if='name.required()') Required
+
+  .brewery-field
+    label> (form='brewery') Brewery
+    select (name='brewery' ng-model='beer.brewery' required
+      ng-options="brewery as brewery.name for brewery in breweries track by brewery.id")
+    label.error< (for='brewery' ng-if='brewery.required()') Required
+
+  .submit
+    input (type='submit' value='Save' ng-disable='beerForm.$invalid')

@@ -15,9 +15,9 @@
     redirectTo: (current, path, search) ->
       if search.goto then search.goto else '/units'
 
-  $routeProvider.when '/units',
-    templateUrl: 'views/units.html'
-    controller: 'UnitsController'
+  $routeProvider.when '/beers',
+    templateUrl: 'views/beers.html'
+    controller: 'BeersController'
 
   $routeProvider.when '/breweries',
     templateUrl: 'views/breweries.html'
@@ -27,7 +27,11 @@
     templateUrl: 'views/containers.html'
     controller: 'ContainersController'
 
+  $routeProvider.when '/units',
+    templateUrl: 'views/units.html'
+    controller: 'UnitsController'
+
   $routeProvider.otherwise
-    redirectTo: '/units'
+    redirectTo: '/beers'
 
   $locationProvider.html5Mode(true);

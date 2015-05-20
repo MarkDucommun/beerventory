@@ -1,10 +1,9 @@
-@beerventory.controller 'NewUnitController', (
+@beerventory.controller 'NewBeerController', (
   $scope,
-  Unit
+  Beer
 ) ->
 
-  $scope.newUnit = Unit.new()
+  $scope.newBeer = Beer.new()
 
-  $scope.afterSave = (unit) ->
-    $scope.units.push(unit)
-    $scope.newUnit = Unit.new()
+  $scope.afterSave = (beer) ->
+    $scope.newBeer = Beer.new()
