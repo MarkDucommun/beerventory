@@ -5,7 +5,7 @@ div (ng-click='edit()' ng-if='notEditting')
 
 div (ng-if='editting')
   beer-form (beer='beer' after-save='afterSave(beer)')
-    input (type='button' ng-click='cancel()' value='Cancel')
+  input (type='button' ng-click='cancel()' value='Cancel')
 
 input (type='button' ng-click='delete({beer: beer})' value='Delete')
 

@@ -12,3 +12,5 @@
     getPacket: ->
       name: this.name
       brewery_id: this.brewery.id
+
+    label: -> "#{this.name} - #{this.brewery.name}"
