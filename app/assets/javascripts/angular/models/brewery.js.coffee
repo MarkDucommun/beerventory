@@ -15,3 +15,11 @@
       name: this.name
       city: this.city
       state: this.state
+
+    label: ->
+      if this.city && this.state
+        "#{this.name} - #{this.city}, #{this.state}"
+      else if this.state
+        "#{this.name} - #{this.state}"
+      else
+        this.name

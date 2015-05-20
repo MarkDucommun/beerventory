@@ -1,8 +1,5 @@
 div (ng-click='edit()' ng-if='notEditting')
-  .brewery-details
-    span.name> {{ brewery.name }} -
-    span.city> {{brewery.city}},
-    span.state {{brewery.state}}
+  .brewery-details {{ brewery.label() }}
 
 div (ng-if='editting')
   brewery-form (brewery='brewery' after-save='afterSave(brewery)')
