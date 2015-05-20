@@ -1,4 +1,4 @@
-div (ng-click='edit()' ng-if='notEditting')
+div (ng-click='edit()' ng-if='notEditing')
   .unit-details
     .beer {{ unit.beer.name }}
 
@@ -15,7 +15,7 @@ div (ng-click='edit()' ng-if='notEditting')
     .best-by-date (ng-if='unit.best_by_date')
       span Best By: {{ unit.best_by_date | date: 'MMM d, yyyy' }}
 
-div (ng-if='editting')
+div (ng-if='editing')
   unit-form (unit='unit' after-save='afterSave(unit)')
   input (type='button' ng-click='cancel()' value='Cancel')
 

@@ -1,9 +1,9 @@
-div (ng-click='edit()' ng-if='notEditting')
+div (ng-click='edit()' ng-if='notEditing')
   .beer-details
     .name {{ beer.name }}
     .brewery {{ beer.brewery.label() }}
 
-div (ng-if='editting')
+div (ng-if='editing')
   beer-form (beer='beer' after-save='afterSave(beer)')
   input (type='button' ng-click='cancel()' value='Cancel')
 

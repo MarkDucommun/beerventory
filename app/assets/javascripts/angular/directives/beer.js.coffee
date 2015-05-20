@@ -5,18 +5,18 @@
     delete: '&'
   templateUrl: 'directives/beer.html'
   link: (scope, element, attrs) ->
-    scope.notEditting = true
-    scope.editting = false
+    scope.notEditing = true
+    scope.editing = false
 
     scope.edit = ->
-      scope.editting = true
-      scope.notEditting = false
+      scope.editing = true
+      scope.notEditing = false
 
     scope.cancel = ->
-      scope.editting = false
-      scope.notEditting = true
+      scope.editing = false
+      scope.notEditing = true
 
     scope.afterSave = (beer) ->
-      scope.editting = false
-      scope.notEditting = true
+      scope.editing = false
+      scope.notEditing = true
       scope.beer = beer

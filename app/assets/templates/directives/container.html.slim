@@ -1,9 +1,9 @@
-div (ng-click='edit()' ng-if='notEditting')
+div (ng-click='edit()' ng-if='notEditing')
   .container-details
     span> (ng-if='container.name') {{ container.name }} -
     span> {{ container.volume }} {{ container.volume_unit }} {{ container.type }}
 
-div (ng-if='editting')
+div (ng-if='editing')
   container-form (container='container' after-save='afterSave(container)')
   input (type='button' ng-click='cancel()' value='Cancel')
 
