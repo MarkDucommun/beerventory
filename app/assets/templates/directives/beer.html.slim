@@ -1,11 +1,11 @@
-div (ng-click='edit()' ng-if='notEditing')
+div (ng-click='state.startEditing()' ng-if='state.notEditing')
   .beer-details
     .name {{ beer.name }}
     .brewery {{ beer.brewery.label() }}
 
-div (ng-if='editing')
+div (ng-if='state.editing')
   beer-form (beer='beer' after-save='afterSave(beer)')
-  input (type='button' ng-click='cancel()' value='Cancel')
+  input (type='button' ng-click='state.stopEditing()' value='Cancel')
 
 input (type='button' ng-click='delete({beer: beer})' value='Delete')
 
