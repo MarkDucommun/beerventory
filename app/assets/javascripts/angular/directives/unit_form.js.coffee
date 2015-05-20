@@ -22,7 +22,6 @@
           required: -> Validations.required(this.field)
 
       scope.saveForm = ->
-        debugger
         scope.unit.save().then (unit) ->
           scope.afterSave(unit: unit)
         scope.unitForm.$setPristine()
