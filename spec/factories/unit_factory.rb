@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :unit do
+    beer
     container
     bottling_date { Random.rand < 0.3 ? Time.now : nil }
     purchase_date { Time.now }

@@ -11,9 +11,11 @@ describe Api::V1::UnitsController do
   end
 
   describe '#create' do
+    let!(:beer) { create(:beer) }
     let!(:container) { create(:container) }
     let(:required_unit_params) do
       {
+        beer_id: beer.id,
         container_id: container.id
       }
     end
@@ -35,6 +37,7 @@ describe Api::V1::UnitsController do
       post :create, unit: full_unit_params
       unit_hash = parse_json_response_body(response).fetch(:unit)
       expect(unit_hash[:id]).to_not be_nil
+      expect(unit_hash[:beer][:id]).to eq beer.id
       expect(unit_hash[:container][:id]).to eq container.id
       expect(unit_hash[:bottling_date]).to_not be nil
       expect(unit_hash[:purchase_date]).to_not be nil

@@ -4,5 +4,6 @@ class UnitSerializer < ActiveModel::Serializer
              :purchase_date,
              :best_by_date
 
+  has_one :beer
   has_one :container
 end
