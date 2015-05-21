@@ -36,6 +36,13 @@ describe Api::V1::LocationsController do
   end
 
   describe '#update' do
+    it 'updates the location record and returns the updated location record' do
+      location = create(:location)
+      new_room = 'Living Room'
+      put :update, id: location.id, location: {room: new_room}
+      location_hash = parse_json_response_body(response).fetch(:location)
+      expect(location_hash[:room]).to eq new_room
+    end
   end
 
   describe '#delete' do
