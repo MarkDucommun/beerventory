@@ -9,5 +9,10 @@ form (name='locationForm' ng-submit='saveForm()' novalidate)
     input (name='room' type='text' ng-model='location.room' required)
     label.error< (for='room' ng-if='room.required()') Required
 
+  .identifier-field
+    label> (for='identifier') Create identifier?
+    input (name='identifier' type='checkbox' ng-model='location.identifier'
+      ng-checked="location.identifier")
+
   .submit
     input (type='submit' value='Save' ng-disabled='locationForm.$invalid')

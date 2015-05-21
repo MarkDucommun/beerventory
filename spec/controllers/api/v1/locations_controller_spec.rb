@@ -19,6 +19,11 @@ describe Api::V1::LocationsController do
         room: room
       }
     end
+    let(:full_location_params) do
+      required_location_params.merge(
+        identifier: true
+      )
+    end
 
     it 'persists a new Location record' do
       expect {
@@ -27,11 +32,12 @@ describe Api::V1::LocationsController do
     end
 
     it 'returns a serialized version of the new Location record' do
-      post :create, location: required_location_params
+      post :create, location: full_location_params
       location_hash = parse_json_response_body(response).fetch(:location)
       expect(location_hash[:id]).to_not be nil
       expect(location_hash[:container]).to eq container
       expect(location_hash[:room]).to eq room
+      expect(location_hash[:identifier]).to match(/[\da-f]{2}/)
     end
   end
 
