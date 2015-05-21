@@ -14,6 +14,10 @@ class Api::V1::LocationsController < Api::V1::ApiController
     render json: location
   end
 
+  def destroy
+    render json: location.destroy
+  end
+
   private
 
   def location_params

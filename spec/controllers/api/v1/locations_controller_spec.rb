@@ -46,6 +46,18 @@ describe Api::V1::LocationsController do
   end
 
   describe '#delete' do
-  end
+    let!(:location) { create(:location) }
 
+    it 'destroys the location record' do
+      expect {
+        delete :destroy, id: location.id
+      }.to change(Location, :count).by(-1)
+    end
+
+    it 'returns the destroyed location record' do
+      delete :destroy, id: location.id
+      location_hash = parse_json_response_body(response).fetch(:location)
+      expect(location_hash[:id]).to_not be nil
+    end
+  end
 end
