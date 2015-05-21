@@ -6,4 +6,5 @@
   $scope.newLocation = Location.new()
 
   $scope.afterSave = (location) ->
+    $scope.locations.push(location)
     $scope.newLocation = Location.new()

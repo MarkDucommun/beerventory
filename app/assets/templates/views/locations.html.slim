@@ -1,3 +1,8 @@
 #new-location (ng-controller='NewLocationController')
   h2 Input a new location
   location-form (location='newLocation' after-save='afterSave(location)')
+
+#all-locations
+  h2 Locations
+  div (ng-repeat='location in locations')
+    location (instance='location' delete='deleteLocation(location)')
