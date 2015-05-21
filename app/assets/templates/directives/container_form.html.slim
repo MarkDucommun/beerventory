@@ -19,4 +19,4 @@ form (name='containerForm' ng-submit='saveForm()' novalidate)
     label.error< (for='volume_unit' ng-if='volume_unit.required()') Required
 
   .submit
-    input (type='submit' value='Save' ng-disable='containerForm.$invalid')
+    input (type='submit' value='Save' ng-disabled='containerForm.$invalid')

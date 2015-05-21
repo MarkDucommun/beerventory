@@ -11,4 +11,4 @@ form (name='beerForm' ng-submit='saveForm()' novalidate)
     label.error< (for='brewery' ng-if='brewery.required()') Required
 
   .submit
-    input (type='submit' value='Save' ng-disable='beerForm.$invalid')
+    input (type='submit' value='Save' ng-disabled='beerForm.$invalid')
