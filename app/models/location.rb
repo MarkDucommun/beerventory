@@ -18,6 +18,8 @@ class Location < ActiveRecord::Base
         invalid = errors.messages[:identifier]
       end
       self.sticker_color = STICKER_COLORS.sample
+    else
+      self.identifier = nil
     end
   end
 end

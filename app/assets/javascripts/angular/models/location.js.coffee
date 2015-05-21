@@ -16,4 +16,7 @@
       identifier: this.identifier
 
     label: ->
-      "#{this.sticker_color} #{this.identifier} - #{this.container}, #{this.room}"
+      if this.identifier
+        "#{this.sticker_color} #{this.identifier} - #{this.container}, #{this.room}"
+      else
+        "#{this.container}, #{this.room}"

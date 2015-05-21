@@ -24,5 +24,6 @@
       best_by_date: this.best_by_date
       beer_id: this.beer.id
       container_id: this.container.id
+      location_id: this.location.id
 
-    identiferLabel: -> "#{this.sticker_color} #{this.identifier}"
+    identifierLabel: -> "#{this.sticker_color} #{this.identifier}"
