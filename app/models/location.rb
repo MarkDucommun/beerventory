@@ -1,13 +1,13 @@
 class Location < ActiveRecord::Base
 
-  include
-
   STICKER_COLORS = ['green', 'orange', 'pink', 'yellow']
 
   validates_presence_of :container, :room
   validates_uniqueness_of :identifier, if: 'identifier.present?'
 
   before_create :create_identifier
+
+  private
 
   def create_identifier
     if identifier == 't'
