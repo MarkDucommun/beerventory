@@ -2,6 +2,12 @@ require 'rails_helper'
 
 describe Api::V1::LocationsController do
   describe '#index' do
+    it 'returns all location records' do
+      locations = create_list(:location, 2)
+      get :index
+      locations_hash = parse_json_response_body(response).fetch(:locations)
+      expect(locations_hash.length).to be locations.length
+    end
   end
 
   describe '#create' do
