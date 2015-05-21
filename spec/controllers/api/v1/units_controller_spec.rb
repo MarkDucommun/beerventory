@@ -13,6 +13,7 @@ describe Api::V1::UnitsController do
   describe '#create' do
     let!(:beer) { create(:beer) }
     let!(:container) { create(:container) }
+    let!(:location) { create(:location) }
     let(:required_unit_params) do
       {
         beer_id: beer.id,
@@ -23,7 +24,8 @@ describe Api::V1::UnitsController do
       required_unit_params.merge(
         bottling_date: 10.days.ago,
         purchase_date: Time.now,
-        best_by_date: 2.months.from_now
+        best_by_date: 2.months.from_now,
+        location_id: location.id
       )
     end
 
@@ -39,6 +41,7 @@ describe Api::V1::UnitsController do
       expect(unit_hash[:id]).to_not be_nil
       expect(unit_hash[:beer][:id]).to eq beer.id
       expect(unit_hash[:container][:id]).to eq container.id
+      expect(unit_hash[:location][:id]).to eq location.id
       expect(unit_hash[:bottling_date]).to_not be nil
       expect(unit_hash[:purchase_date]).to_not be nil
       expect(unit_hash[:best_by_date]).to_not be nil
