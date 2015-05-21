@@ -1,0 +1,13 @@
+form (name='locationForm' ng-submit='saveForm()' novalidate)
+  .container-field
+    label> (for='container') Container
+    input (name='container' type='text' ng-model='location.container' required)
+    label.error< (for='container' ng-if='container.required()') Required
+
+  .room-field
+    label> (for='room') Room
+    input (name='room' type='text' ng-model='location.room' required)
+    label.error< (for='room' ng-if='room.required()') Required
+
+  .submit
+    input (type='submit' value='Save' ng-disabled='locationForm.$invalid')

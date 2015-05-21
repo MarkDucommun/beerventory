@@ -27,6 +27,10 @@
     templateUrl: 'views/containers.html'
     controller: 'ContainersController'
 
+  $routeProvider.when '/locations',
+    templateUrl: 'views/locations.html'
+    controller: 'LocationsController'
+
   $routeProvider.when '/units',
     templateUrl: 'views/units.html'
     controller: 'UnitsController'

@@ -1,0 +1,3 @@
+@beerventory.controller 'LocationsController', (
+  $scope
+) ->
