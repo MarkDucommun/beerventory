@@ -5,8 +5,8 @@ describe Api::V1::BreweriesController do
     it 'returns all brewery records' do
       breweries = create_list(:brewery, 2)
       get :index
-      breweries_json = JSON.parse(response.body).with_indifferent_access
-      expect(breweries_json[:breweries].length).to be breweries.length
+      breweries_hash = parse_json_response_body(response).fetch(:breweries)
+      expect(breweries_hash.length).to be breweries.length
     end
   end
 
