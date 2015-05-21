@@ -1,7 +1,8 @@
 @beerventory.directive 'unitForm', (
   Validations,
   Beer,
-  Container
+  Container,
+  Location
 ) ->
   restrict: 'E'
   scope:
@@ -11,12 +12,16 @@
   link: (scope, element, attrs) ->
       scope.beers = []
       scope.containers = []
+      scope.location = []
 
       Beer.index().then (beers) ->
         scope.beers = beers
 
       Container.index().then (containers) ->
         scope.containers = containers
+
+      Location.index().then (locations) ->
+        scope.locations = locations
 
       scope.$watch 'unit', ->
         alert('ERROR: NOT A UNIT') if scope.unit.constructor.name != 'Unit'

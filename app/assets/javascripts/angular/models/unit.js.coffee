@@ -1,7 +1,8 @@
 @beerventory.factory 'Unit', (
   BaseModel,
   Beer,
-  Container
+  Container,
+  Location
 )  ->
 
   class Unit extends BaseModel
@@ -14,6 +15,7 @@
       this.best_by_date = new Date(args.best_by_date) if args.best_by_date
       this.beer = Beer.new(args.beer)
       this.container = Container.new(args.container)
+      this.location = Location.new(args.location)
       super(args)
 
     getPacket: ->

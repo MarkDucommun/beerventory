@@ -11,6 +11,11 @@ form (name='unitForm' ng-submit='saveForm()' novalidate)
       ng-options="container as container.label() for container in containers track by container.id")
     label.error< (for='container' ng-if='container.required()') Required
 
+  .location-field
+    label> (for='location') Location
+    select (name='location' ng-model='unit.location'
+      ng-options="location as location.label() for location in locations track by location.id")
+
   .bottling-date-field
     label> (for='bottling_date') Bottled
     input (name='bottling_date' type='date' ng-model='unit.bottling_date')

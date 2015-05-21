@@ -4,6 +4,7 @@ class Unit < ActiveRecord::Base
 
   belongs_to :beer
   belongs_to :container
+  belongs_to :location
 
   validates_presence_of :beer, :container
   validates_uniqueness_of :identifier

@@ -8,4 +8,5 @@ class UnitSerializer < ActiveModel::Serializer
 
   has_one :beer
   has_one :container
+  has_one :location
 end

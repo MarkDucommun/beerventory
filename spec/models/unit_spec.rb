@@ -4,6 +4,7 @@ describe Unit do
   context 'associations' do
     it { should belong_to :beer }
     it { should belong_to :container }
+    it { should belong_to :location }
   end
 
   context 'validations' do
