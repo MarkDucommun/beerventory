@@ -1,6 +1,6 @@
 div (ng-click='state.startEditing()' ng-if='state.notEditing')
   .unit-details
-    .beer {{ unit.beer.name }}
+    .beer {{ unit.beer.name }} - {{ unit.identiferLabel() }}
 
     .brewery {{ unit.beer.brewery.label() }}
 

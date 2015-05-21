@@ -1,5 +1,7 @@
 class UnitSerializer < ActiveModel::Serializer
   attributes :id,
+             :identifier,
+             :sticker_color,
              :bottling_date,
              :purchase_date,
              :best_by_date
