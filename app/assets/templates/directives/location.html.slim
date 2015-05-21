@@ -1,7 +1,5 @@
 div (ng-click='state.startEditing()' ng-if='state.notEditing')
-  .location-details
-    .container {{ location.container }}
-    .room {{ location.room }}
+  .location-details {{ location.label() }}
 
 div (ng-if='state.editing')
   location-form (location='location' after-save='afterSave(location)')
