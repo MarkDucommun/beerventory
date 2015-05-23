@@ -2,7 +2,8 @@
   Validations,
   Beer,
   Container,
-  Location
+  Location,
+  Unit
 ) ->
   restrict: 'E'
   scope:
@@ -10,6 +11,8 @@
     afterSave: '&'
   templateUrl: 'directives/unit_form.html'
   link: (scope, element, attrs) ->
+      scope.quantity = 1
+
       scope.makeNewBeer = false
       scope.makeNewContainer = false
       scope.makeNewLocation = false
@@ -41,6 +44,9 @@
         scope.container =
           required: -> Validations.required(scope.unitForm.container)
 
+        scope.quantity =
+          number: -> Validations.number(scope.unitForm.quantity)
+
       scope.afterNewBeerSave = (beer) ->
         scope.beers.push(beer)
         scope.unit.beer = beer
@@ -60,6 +66,17 @@
         scope.newLocation = Location.new()
 
       scope.saveUnitForm = ->
-        scope.unit.save().then (unit) ->
-          scope.afterSave(unit: unit)
+        scope.newUnits = []
+        dupUnit = _.extend({}, scope.unit)
+        _.each [1..scope.quantity], ->
+          _.extend({}, dupUnit).save().then (unit) ->
+            scope.newUnits.push(unit)
+            scope.afterSave(unit: unit)
+        scope.showNewIdentifiers = true
         scope.unitForm.$setPristine()
+
+      scope.showNewIdentifiers = false
+
+      scope.dismissIdentifiers = ->
+        scope.showNewIdentifiers = false
+        scope.newUnits = []

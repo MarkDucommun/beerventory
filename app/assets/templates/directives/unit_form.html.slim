@@ -1,3 +1,8 @@
+.identifiers-area (ng-if='showNewIdentifiers')
+  .button (ng-click='dismissIdentifiers()') Reset Form
+  ul.identifiers (ng-repeat='unit in newUnits track by unit.id')
+    li.identifier {{ unit.identifierLabel() }}
+
 form (name='unitForm' ng-submit='saveUnitForm()' novalidate)
   .beer-field
     .new-or-old
@@ -53,6 +58,11 @@ form (name='unitForm' ng-submit='saveUnitForm()' novalidate)
   .best-by-date-field
     label> (for='best_by_date') Best By
     input (name='best_by_date' type='date' ng-model='unit.best_by_date')
+
+  .quantity-field
+    label> (for='quantity') Quantity
+    input (name='quantity' type='number' ng-model='quantity')
+    label.error< (for='quantity' ng-if='quantity.number()') Must be a number
 
   .submit
     input (type='submit' value='Save Unit' ng-disabled='unitForm.$invalid')

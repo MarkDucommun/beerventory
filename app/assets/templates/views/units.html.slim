@@ -4,5 +4,5 @@
 
 #all-unit
   h2 Units
-  div (ng-repeat='unit in units')
+  div (ng-repeat='unit in units track by unit.id')
     unit (instance='unit' delete='deleteUnit(unit)')
