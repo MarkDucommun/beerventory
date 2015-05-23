@@ -11,8 +11,21 @@
       alert('ERROR: NOT A BREWERY') if scope.brewery.constructor.name != 'Brewery'
 
     scope.$watch 'breweryForm', ->
-      scope.name =
-        required: -> Validations.required(scope.breweryForm.name)
+      scope.nameFns = Validations.createFns scope.breweryForm.name, [
+        'required'
+        'valid'
+        'invalid'
+      ]
+
+      scope.cityFns = Validations.createFns scope.breweryForm.city, [
+        'valid'
+        'invalid'
+      ]
+
+      scope.stateFns = Validations.createFns scope.breweryForm.state, [
+        'valid'
+        'invalid'
+      ]
 
     scope.saveBreweryForm = ->
       scope.brewery.save().then (brewery) ->

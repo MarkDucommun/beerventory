@@ -1,16 +1,21 @@
 form (name='breweryForm' ng-submit='saveBreweryForm()' novalidate)
-  .name-field
-    label> (for='name') Name
-    input (name='name' type='text' ng-model='brewery.name' required)
-    label.error< (for='name' ng-if='name.required()') Required
+  .name-field.form-group (ng-class="{'has-error': nameFns.invalid(), \
+    'has-success': nameFns.valid()}")
+    label.control-label> (for='name') Name
+    input.form-control (name='name' type='text' ng-model='brewery.name' required)
+    label.control-label.error< (for='name' ng-if='nameFns.required()') Required
 
-  .city-field
-    label> (form='city') City
-    input (name='city' type='text' ng-model='brewery.city')
+  .row
+    .city-field.form-group.col-xs-8 (ng-class="{'has-error': cityFns.invalid(), \
+      'has-success': cityFns.valid()}")
+      label.control-label> (form='city') City
+      input.form-control (name='city' type='text' ng-model='brewery.city')
 
-  .state-field
-    label> (form='state') State
-    input (name='state' type='text' ng-model='brewery.state')
+    .state-field.form-group.col-xs-4 (ng-class="{'has-error': stateFns.invalid(), \
+      'has-success': stateFns.valid()}")
+      label.control-label> (form='state') State
+      input.form-control (name='state' type='text' ng-model='brewery.state')
 
-  .submit
-    input (type='submit' value='Save Brewery' ng-disabled='breweryForm.$invalid')
+  .submit.form-group
+    input.btn.btn-primary.btn-block (type='submit' value='Save Brewery'
+      ng-disabled="breweryForm.$invalid")
