@@ -3,6 +3,8 @@
   Unit
 ) ->
 
+  $scope.setTab('units')
+
   $scope.units = []
 
   Unit.index().then (units) ->

@@ -3,6 +3,8 @@
   Container
 ) ->
 
+  $scope.setTab('containers')
+
   $scope.containers = []
 
   Container.index().then (containers) ->

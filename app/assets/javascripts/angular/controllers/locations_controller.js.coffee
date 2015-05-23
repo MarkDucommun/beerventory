@@ -3,6 +3,8 @@
   Location
 ) ->
 
+  $scope.setTab('locations')
+
   $scope.locations = []
 
   Location.index().then (locations) ->

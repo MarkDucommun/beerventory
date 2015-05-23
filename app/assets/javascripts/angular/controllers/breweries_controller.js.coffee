@@ -3,6 +3,8 @@
   Brewery
 ) ->
 
+  $scope.setTab('breweries')
+
   $scope.breweries = []
 
   Brewery.index().then (breweries) ->
