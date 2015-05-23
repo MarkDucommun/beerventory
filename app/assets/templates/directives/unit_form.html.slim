@@ -1,4 +1,4 @@
-form (name='unitForm' ng-submit='saveForm()' novalidate)
+form (name='unitForm' ng-submit='saveUnitForm()' novalidate)
   .beer-field
     label> (for='beer') Beer
     select (name='beer' ng-model='unit.beer' required
@@ -29,4 +29,4 @@ form (name='unitForm' ng-submit='saveForm()' novalidate)
     input (name='best_by_date' type='date' ng-model='unit.best_by_date')
 
   .submit
-    input (type='submit' value='Save' ng-disabled='unitForm.$invalid')
+    input (type='submit' value='Save Unit' ng-disabled='unitForm.$invalid')

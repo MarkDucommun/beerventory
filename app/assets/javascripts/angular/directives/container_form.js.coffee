@@ -34,7 +34,7 @@
         field: scope.containerForm.volume_unit
         required: -> Validations.required(this.field)
 
-    scope.saveForm = ->
+    scope.saveContainerForm = ->
       scope.container.save().then (container) ->
         scope.afterSave(container: container)
       scope.containerForm.$setPristine()

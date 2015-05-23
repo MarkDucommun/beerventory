@@ -1,4 +1,4 @@
-form (name='locationForm' ng-submit='saveForm()' novalidate)
+form (name='locationForm' ng-submit='saveLocationForm()' novalidate)
   .container-field
     label> (for='container') Container
     input (name='container' type='text' ng-model='location.container' required)
@@ -15,4 +15,4 @@ form (name='locationForm' ng-submit='saveForm()' novalidate)
       ng-checked="location.identifier")
 
   .submit
-    input (type='submit' value='Save' ng-disabled='locationForm.$invalid')
+    input (type='submit' value='Save Location' ng-disabled='locationForm.$invalid')

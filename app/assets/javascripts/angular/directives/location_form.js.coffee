@@ -19,7 +19,7 @@
         field: scope.locationForm.room
         required: -> Validations.required(this.field)
 
-    scope.saveForm = ->
+    scope.saveLocationForm = ->
       scope.location.save().then (location) ->
         scope.afterSave(location: location)
       scope.locationForm.$setPristine()

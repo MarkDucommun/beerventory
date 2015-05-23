@@ -35,7 +35,7 @@
           field: scope.unitForm.container
           required: -> Validations.required(this.field)
 
-      scope.saveForm = ->
+      scope.saveUnitForm = ->
         scope.unit.save().then (unit) ->
           scope.afterSave(unit: unit)
         scope.unitForm.$setPristine()

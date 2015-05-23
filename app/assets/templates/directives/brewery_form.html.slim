@@ -1,4 +1,4 @@
-form (name='breweryForm' ng-submit='saveForm()' novalidate)
+form (name='breweryForm' ng-submit='saveBreweryForm()' novalidate)
   .name-field
     label> (for='name') Name
     input (name='name' type='text' ng-model='brewery.name' required)
@@ -13,4 +13,4 @@ form (name='breweryForm' ng-submit='saveForm()' novalidate)
     input (name='state' type='text' ng-model='brewery.state')
 
   .submit
-    input (type='submit' value='Save' ng-disabled='breweryForm.$invalid')
+    input (type='submit' value='Save Brewery' ng-disabled='breweryForm.$invalid')

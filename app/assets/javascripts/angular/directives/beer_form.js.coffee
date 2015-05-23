@@ -23,7 +23,7 @@
         field: scope.beerForm.brewery
         required: -> Validations.required(this.field)
 
-    scope.saveForm = ->
+    scope.saveBeerForm = ->
       scope.beer.save().then (beer) ->
         scope.afterSave(beer: beer)
       scope.beerForm.$setPristine

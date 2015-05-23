@@ -15,7 +15,7 @@
         field: scope.breweryForm.name
         required: -> Validations.required(this.field)
 
-    scope.saveForm = ->
+    scope.saveBreweryForm = ->
       scope.brewery.save().then (brewery) ->
         scope.afterSave(brewery: brewery)
       scope.breweryForm.$setPristine()
