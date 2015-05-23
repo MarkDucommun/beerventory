@@ -81,7 +81,7 @@ form (name='unitForm' ng-submit='saveUnitForm()' novalidate ng-cloak)
       label.control-label.error (for='quantity' ng-if='quantityFns.max()') Must be 100 or fewer
 
   .row
-    .note-field.form-group.col-xs-12 (ng-class="{'has-error: noteFns.invalid(), \
+    .note-field.form-group.col-xs-12 (ng-class="{'has-error': noteFns.invalid(), \
       'has-success': noteFns.valid()}")
       label.control-label (for='note') Notes
       textarea.form-control (name='note' ng-model='unit.note')
