@@ -1,7 +1,7 @@
 .identifiers-area (ng-if='showNewIdentifiers')
   .button (ng-click='dismissIdentifiers()') Reset Form
-  ul.identifiers (ng-repeat='unit in newUnits track by unit.id')
-    li.identifier {{ unit.identifierLabel() }}
+  .identifiers (ng-repeat='unit in newUnits track by unit.id')
+    p.identifier {{ unit.identifierLabel() }}
 
 form (name='unitForm' ng-submit='saveUnitForm()' novalidate)
   .beer-field
