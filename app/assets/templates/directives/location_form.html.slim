@@ -1,18 +1,21 @@
 form (name='locationForm' ng-submit='saveLocationForm()' novalidate)
-  .container-field
-    label> (for='container') Container
-    input (name='container' type='text' ng-model='location.container' required)
-    label.error< (for='container' ng-if='container.required()') Required
+  .container-field.form-group (ng-class="{'has-error': containerFns.invalid(), \
+    'has-success': containerFns.valid()}")
+    label.control-label (for='container') Container
+    input.form-control (name='container' type='text' ng-model='location.container' required)
+    label.control-label.error (for='container' ng-if='containerFns.required()') Required
 
-  .room-field
-    label> (for='room') Room
-    input (name='room' type='text' ng-model='location.room' required)
-    label.error< (for='room' ng-if='room.required()') Required
+  .room-field.form-group (ng-class="{'has-error': roomFns.invalid(), \
+    'has-success': roomFns.valid()}")
+    label.control-label (for='room') Room
+    input.form-control (name='room' type='text' ng-model='location.room' required)
+    label.control-label.error (for='room' ng-if='roomFns.required()') Required
 
-  .identifier-field
-    label> (for='identifier') Create identifier?
-    input (name='identifier' type='checkbox' ng-model='location.identifier'
-      ng-checked="location.identifier")
+  .identifier-field.checkbox
+    label
+      input (name='identifier' type='checkbox' ng-model='location.identifier'
+        ng-checked="location.identifier") Create identifier?
 
-  .submit
-    input (type='submit' value='Save Location' ng-disabled='locationForm.$invalid')
+  .submit.form-group
+    input.btn.btn-primary.btn-block (type='submit' value='Save Location'
+      ng-disabled="locationForm.$invalid")

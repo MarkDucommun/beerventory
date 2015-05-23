@@ -11,13 +11,17 @@
       alert('ERROR: NOT A LOCATION') if scope.location.constructor.name != 'Location'
 
     scope.$watch 'locationForm', ->
-      scope.container =
-        field: scope.locationForm.container
-        required: -> Validations.required(this.field)
+      scope.containerFns = Validations.createFns scope.locationForm.container, [
+        'required'
+        'valid'
+        'invalid'
+      ]
 
-      scope.room = ->
-        field: scope.locationForm.room
-        required: -> Validations.required(this.field)
+      scope.roomFns = Validations.createFns scope.locationForm.room, [
+        'required'
+        'valid'
+        'invalid'
+      ]
 
     scope.saveLocationForm = ->
       scope.location.save().then (location) ->
