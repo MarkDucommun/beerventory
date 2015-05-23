@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150521052015) do
+ActiveRecord::Schema.define(version: 20150523215934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20150521052015) do
     t.string   "identifier"
     t.string   "sticker_color"
     t.integer  "location_id"
+    t.text     "note"
   end
 
 end

@@ -79,6 +79,11 @@
           'invalid'
         ]
 
+        scope.noteFns = Validations.createFns scope.unitForm.note, [
+          'valid'
+          'invalid'
+        ]
+
       scope.afterNewBeerSave = (beer) ->
         scope.beers.push(beer)
         scope.unit.beer = beer

@@ -4,7 +4,8 @@ class UnitSerializer < ActiveModel::Serializer
              :sticker_color,
              :bottling_date,
              :purchase_date,
-             :best_by_date
+             :best_by_date,
+             :note
 
   has_one :beer
   has_one :container

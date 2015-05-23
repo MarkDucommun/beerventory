@@ -25,6 +25,7 @@ class Api::V1::UnitsController < Api::V1::ApiController
       :bottling_date,
       :purchase_date,
       :best_by_date,
+      :note,
       :beer_id,
       :container_id,
       :location_id

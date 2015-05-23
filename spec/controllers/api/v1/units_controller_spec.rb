@@ -25,6 +25,7 @@ describe Api::V1::UnitsController do
         bottling_date: 10.days.ago,
         purchase_date: Time.now,
         best_by_date: 2.months.from_now,
+        note: 'This is a note',
         location_id: location.id
       )
     end
