@@ -1,5 +1,6 @@
 # asset 'foundation5-sass'
 # asset 'foundation'
+asset 'bootstrap-sass'
 
 asset 'jquery'
 asset 'underscore'
