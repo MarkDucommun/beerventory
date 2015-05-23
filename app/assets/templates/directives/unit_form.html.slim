@@ -62,7 +62,7 @@ form (name='unitForm' ng-submit='saveUnitForm()' novalidate)
   .quantity-field
     label> (for='quantity') Quantity
     input (name='quantity' type='number' ng-model='quantity')
-    label.error< (for='quantity' ng-if='quantity.number()') Must be a number
+    label.error< (for='quantity' ng-if='quantityFns.number()') Must be a number
 
   .submit
     input (type='submit' value='Save Unit' ng-disabled='unitForm.$invalid')

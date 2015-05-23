@@ -44,7 +44,7 @@
         scope.container =
           required: -> Validations.required(scope.unitForm.container)
 
-        scope.quantity =
+        scope.quantityFns =
           number: -> Validations.number(scope.unitForm.quantity)
 
       scope.afterNewBeerSave = (beer) ->
