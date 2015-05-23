@@ -21,18 +21,29 @@
       alert('ERROR: NOT A CONTAINER') if scope.container.constructor.name != 'Container'
 
     scope.$watch 'containerForm', ->
-      scope.type =
-        field: scope.containerForm.type
-        required: -> Validations.required(this.field)
+      scope.nameFns = Validations.createFns scope.containerForm.name, [
+        'valid',
+        'invalid'
+        ]
 
-      scope.volume =
-        field: scope.containerForm.volume
-        required: -> Validations.required(this.field)
-        number: -> Validations.number(this.field)
+      scope.typeFns = Validations.createFns scope.containerForm.type, [
+        'required',
+        'valid',
+        'invalid'
+        ]
 
-      scope.volume_unit =
-        field: scope.containerForm.volume_unit
-        required: -> Validations.required(this.field)
+      scope.volumeFns = Validations.createFns scope.containerForm.volume, [
+        'valid'
+        'invalid'
+        'required'
+        'number'
+        ]
+
+      scope.volume_unitFns = Validations.createFns scope.containerForm.volume_unit, [
+        'valid'
+        'invalid'
+        'required'
+      ]
 
     scope.saveContainerForm = ->
       scope.container.save().then (container) ->

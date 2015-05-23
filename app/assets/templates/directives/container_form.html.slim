@@ -1,22 +1,31 @@
 form (name='containerForm' ng-submit='saveContainerForm()' novalidate)
-  .name-field
-    label> (for='name') Name
-    input (name='name' type='text' ng-model='container.name')
+  .name-field.form-group (ng-class="{'has-error': nameFns.invalid(), \
+    'has-success': nameFns.valid()}")
+    label.control-label (for='name') Name
+    input.form-control (name='name' type='text' ng-model='container.name')
 
-  .type-field
-    label> (for='type') Type
-    select (name='type' ng-model='container.type' required
+  .type-field.form-group (ng-class="{'has-error': typeFns.invalid(), \
+    'has-success': typeFns.valid()}")
+    label.control-label (for='type') Type
+    select.form-control (name='type' ng-model='container.type' required
       ng-options="type as type for type in types")
-    label.error< (for='type' ng-if='type.required()') Required
+    label.control-label.error (for='type' ng-if='typeFns.required()') Required
 
-  .volume-field
-    label> (for='volume') Volume
-    input (name='volume' type='number' ng-model='container.volume' required)
-    select (name='volume_unit' ng-model='container.volume_unit' required
-      ng-options="volume_unit as volume_unit for volume_unit in volume_units")
-    label.error<> (for='volume' ng-if='volume.required()') Required
-    label.error< (for='volume' ng-if='volume.number()') Must be a number
-    label.error< (for='volume_unit' ng-if='volume_unit.required()') Required
+  .row
+    .volume-field.form-group.col-xs-8 (ng-class="{'has-error': volumeFns.invalid(), \
+      'has-success': volumeFns.valid()}")
+      label.control-label (for='volume') Volume
+      input.form-control (name='volume' type='number' ng-model='container.volume' required)
+      label.control-label.error<> (for='volume' ng-if='volumeFns.required()') Required
+      label.control-label.error< (for='volume' ng-if='volumeFns.number()') Must be a number
 
-  .submit
-    input (type='submit' value='Save Container' ng-disabled='containerForm.$invalid')
+    .volume_unit-field.form-group.col-xs-4(ng-class="{'has-error': volume_unitFns.invalid(), \
+      'has-success': volume_unitFns.valid()}")
+      label.control-label (for='volume_unit') Unit
+      select.form-control (name='volume_unit' ng-model='container.volume_unit' required
+        ng-options="volume_unit as volume_unit for volume_unit in volume_units")
+      label.control-label.error (for='volume_unit' ng-if='volume_unitFns.required()') Required
+
+  .submit.form-group
+    input.btn.btn-primary.btn-block (type='submit' value='Save Container'
+      ng-disabled="containerForm.$invalid")
