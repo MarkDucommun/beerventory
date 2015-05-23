@@ -1,22 +1,29 @@
 form (name='beerForm' ng-submit='saveBeerForm()' novalidate)
-  .name-field
-    label> (for='name') Name
-    input (name='name' type='text' ng-model='beer.name' required)
-    label.error< (for='name' ng-if='name.required()') Required
+  .name-field.form-group (ng-class="{'has-error': nameFns.invalid(), \
+    'has-success': nameFns.valid()}")
+    label.control-label> (for='name') Name
+    input.form-control (name='name' type='text' ng-model='beer.name' required)
+    label.error.control-label< (for='name' ng-if='nameFns.required()') Required
 
   .brewery-field
-    .new-or-old
-      .button (ng-click='makeNewBrewery = true') Enter a new brewery
-      .button (ng-click='makeNewBrewery = false') Use an old brewery
+    .new-or-old.btn-group (role='group')
+      .btn.btn-default.btn-xs (ng-click='makeNewBrewery = true'
+        ng-class="makeNewBrewery ? 'btn-primary' : 'btn-default'") NEW
+      .btn.btn-default.btn-xs (ng-click='makeNewBrewery = false'
+        ng-class="makeNewBrewery ? 'btn-default' : 'btn-primary'") OLD
 
     .new (ng-if='makeNewBrewery')
+      label> (form='brewery') Brewery
       brewery-form (brewery='newBrewery' after-save='afterNewBrewerySave(brewery)')
 
-    .old (ng-if='!makeNewBrewery')
-      label> (form='brewery') Brewery
-      select (name='brewery' ng-model='beer.brewery' required
+    .old.form-group (ng-if='!makeNewBrewery'
+      ng-class="{'has-error': breweryFns.invalid(), \
+      'has-success': breweryFns.valid()}")
+      label.control-label> (form='brewery') Brewery
+      select.form-control (name='brewery' ng-model='beer.brewery' required
         ng-options="brewery as brewery.name for brewery in breweries track by brewery.id")
-      label.error< (for='brewery' ng-if='brewery.required()') Required
+      label.control-label.error< (for='brewery' ng-if='breweryFns.required()') Required
 
-  .submit
-    input (type='submit' value='Save Beer' ng-disabled='beerForm.$invalid')
+  .submit.form-group
+    input.btn.btn-primary.btn-block (type='submit' value='Save Beer'
+      ng-disabled="beerForm.$invalid")
