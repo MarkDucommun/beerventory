@@ -1,8 +1,9 @@
-#new-beer (ng-controller='NewBeerController')
-  h2 Input a new beer
-  beer-form (beer='newBeer' after-save='afterSave(beer)')
+.row
+  #new-beer.col-md-7 (ng-controller='NewBeerController')
+    h2 Input a new beer
+    beer-form (beer='newBeer' after-save='afterSave(beer)')
 
-#all-beers
-  h2 Beers
-  div (ng-repeat='beer in beers | orderBy:"name":true')
-    beer (instance='beer' delete='deleteBeer(beer)')
+  #all-beers.col-md-5
+    h2 Beers
+    div (ng-repeat='beer in beers | orderBy:"name":true')
+      beer (instance='beer' delete='deleteBeer(beer)')

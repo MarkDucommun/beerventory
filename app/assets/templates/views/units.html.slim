@@ -1,8 +1,9 @@
-#new-unit (ng-controller='NewUnitController')
-  h2 Input a new unit
-  unit-form (unit='newUnit' after-save='afterSave(unit)')
+.row
+  #new-unit.col-md-7 (ng-controller='NewUnitController')
+    h2 Input a new unit
+    unit-form (unit='newUnit' after-save='afterSave(unit)')
 
-#all-unit
-  h2 Units
-  div (ng-repeat='unit in units track by unit.id')
-    unit (instance='unit' delete='deleteUnit(unit)')
+  #all-unit.col-md-5
+    h2 Units
+    div (ng-repeat='unit in units track by unit.id')
+      unit (instance='unit' delete='deleteUnit(unit)')
