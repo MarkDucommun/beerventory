@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap-sass/assets/javascripts/bootstrap-sprockets
 //= require underscore
 //= require angular
 //= require angular-underscore
