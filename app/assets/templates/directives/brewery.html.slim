@@ -1,10 +1,11 @@
-div (ng-click='state.startEditing()' ng-if='state.notEditing')
-  .brewery-details {{ brewery.label() }}
+div (ng-cloak)
+  div (ng-click='state.startEditing()' ng-if='state.notEditing')
+    .brewery-details {{ brewery.label() }}
 
-div (ng-if='state.editing')
-  brewery-form (brewery='brewery' after-save='afterSave(brewery)')
-  input (type='button' ng-click='state.stopEditing()' value='Cancel')
+  div (ng-if='state.editing')
+    brewery-form (brewery='brewery' after-save='afterSave(brewery)')
+    input (type='button' ng-click='state.stopEditing()' value='Cancel')
 
-input (type='button' ng-click='delete({brewery: brewery})' value='Delete')
+  input (type='button' ng-click='delete({brewery: brewery})' value='Delete')
 
 br

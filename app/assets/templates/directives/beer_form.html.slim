@@ -1,4 +1,4 @@
-form (name='beerForm' ng-submit='saveBeerForm()' novalidate)
+form (name='beerForm' ng-submit='saveBeerForm()' novalidate ng-cloak)
   .name-field.form-group (ng-class="{'has-error': nameFns.invalid(), \
     'has-success': nameFns.valid()}")
     label.control-label> (for='name') Name

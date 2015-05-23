@@ -1,28 +1,29 @@
-div (ng-click='state.startEditing()' ng-if='state.notEditing')
-  .unit-details
-    .beer {{ unit.beer.name }}
+div (ng-cloak)
+  div (ng-click='state.startEditing()' ng-if='state.notEditing')
+    .unit-details
+      .beer {{ unit.beer.name }}
 
-    .brewery {{ unit.beer.brewery.label() }}
+      .brewery {{ unit.beer.brewery.label() }}
 
-    .location {{ unit.location.label() }}
+      .location {{ unit.location.label() }}
 
-    .identifier {{ unit.identifierLabel() }}
+      .identifier {{ unit.identifierLabel() }}
 
-    .container {{ unit.container.label() }}
+      .container {{ unit.container.label() }}
 
-    .bottling-date (ng-if='unit.bottling_date')
-      span Bottled: {{ unit.bottling_date | date: 'MMM d, yyyy' }}
+      .bottling-date (ng-if='unit.bottling_date')
+        span Bottled: {{ unit.bottling_date | date: 'MMM d, yyyy' }}
 
-    .purchase-date (ng-if='unit.purchase_date')
-      span Purchased: {{ unit.purchase_date | date: 'MMM d, yyyy' }}
+      .purchase-date (ng-if='unit.purchase_date')
+        span Purchased: {{ unit.purchase_date | date: 'MMM d, yyyy' }}
 
-    .best-by-date (ng-if='unit.best_by_date')
-      span Best By: {{ unit.best_by_date | date: 'MMM d, yyyy' }}
+      .best-by-date (ng-if='unit.best_by_date')
+        span Best By: {{ unit.best_by_date | date: 'MMM d, yyyy' }}
 
-div (ng-if='state.editing')
-  unit-form (unit='unit' after-save='afterSave(unit)')
-  input (type='button' ng-click='state.stopEditing()' value='Cancel')
+  div (ng-if='state.editing')
+    unit-form (unit='unit' after-save='afterSave(unit)')
+    input (type='button' ng-click='state.stopEditing()' value='Cancel')
 
-input (type='button' ng-click='delete({unit: unit})' value='Delete')
+  input (type='button' ng-click='delete({unit: unit})' value='Delete')
 
 br

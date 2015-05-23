@@ -1,4 +1,4 @@
-form (name='locationForm' ng-submit='saveLocationForm()' novalidate)
+form (name='locationForm' ng-submit='saveLocationForm()' novalidate ng-cloak)
   .container-field.form-group (ng-class="{'has-error': containerFns.invalid(), \
     'has-success': containerFns.valid()}")
     label.control-label (for='container') Container
