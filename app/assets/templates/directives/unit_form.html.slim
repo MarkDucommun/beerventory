@@ -1,68 +1,94 @@
-.identifiers-area (ng-if='showNewIdentifiers')
-  .button (ng-click='dismissIdentifiers()') Reset Form
-  .identifiers (ng-repeat='unit in newUnits track by unit.id')
-    p.identifier {{ unit.identifierLabel() }}
-
 form (name='unitForm' ng-submit='saveUnitForm()' novalidate)
-  .beer-field
-    .new-or-old
-      .button (ng-click='makeNewBeer = true') Enter a new beer
-      .button (ng-click='makeNewBeer = false') Use an old beer
+  .row
+    .beer-field.col-sm-12
+      .new-or-old.btn-group (role='group')
+        .btn.btn-default.btn-xs (ng-click='makeNewBeer = true'
+          ng-class="makeNewBeer ? 'btn-primary' : 'btn-default'") NEW
+        .btn.btn-default.btn-xs (ng-click='makeNewBeer = false'
+          ng-class="makeNewBeer ? 'btn-default' : 'btn-primary'") OLD
 
-    .new (ng-if='makeNewBeer')
-      beer-form (beer='newBeer' after-save='afterNewBeerSave(beer)')
+      .new (ng-if='makeNewBeer')
+        label (for='beer') Beer
+        beer-form (beer='newBeer' after-save='afterNewBeerSave(beer)')
 
-    .old (ng-if='!makeNewBeer')
-      label> (for='beer') Beer
-      select (name='beer' ng-model='unit.beer' required
-        ng-options="beer as beer.label() for beer in beers track by beer.id")
-      label.error< (for='beer' ng-if='beer.required()') Required
+      .old.form-group (ng-if='!makeNewBeer' ng-class="{'has-error': \
+        beerFns.invalid(), 'has-success': beerFns.valid()}")
+        label.control-label (for='beer') Beer
+        select.form-control (name='beer' ng-model='unit.beer' required
+          ng-options="beer as beer.label() for beer in beers track by beer.id")
+        label.control-label.error (for='beer' ng-if='beerFns.required()') Required
 
-  .container-field
-    .new-or-old
-      .button (ng-click='makeNewContainer = true') Enter a new container
-      .button (ng-click='makeNewContainer = false') Use an old container
+    .container-field.col-sm-12
+      .new-or-old.btn-group (role='group')
+        .btn.btn-default.btn-xs (ng-click='makeNewContainer = true'
+          ng-class="makeNewContainer ? 'btn-primary' : 'btn-default'") NEW
+        .btn.btn-default.btn-xs (ng-click='makeNewContainer = false'
+          ng-class="makeNewContainer ? 'btn-default' : 'btn-primary'") OLD
 
-    .new (ng-if='makeNewContainer')
-      container-form (container='newContainer'
-        after-save="afterNewContainerSave(container)")
+      .new (ng-if='makeNewContainer')
+        container-form (container='newContainer'
+          after-save="afterNewContainerSave(container)")
 
-    .old (ng-if='!makeNewContainer')
-      label> (for='container') Container
-      select (name='container' ng-model='unit.container' required
-        ng-options="container as container.label() for container in containers track by container.id")
-      label.error< (for='container' ng-if='container.required()') Required
+      .old.form-group (ng-if='!makeNewContainer' ng-class="{'has-error': \
+        containerFns.invalid(), 'has-success': containerFns.valid()}")
+        label.control-label (for='container') Container
+        select.form-control (name='container' ng-model='unit.container' required
+          ng-options="container as container.label() for container in containers track by container.id")
+        label.control-label.error (for='container' ng-if='containerFns.required()') Required
 
-  .location-field
-    .new-or-old
-      .button (ng-click='makeNewLocation = true') Enter a new location
-      .button (ng-click='makeNewLocation = false') Use an old location
+    .location-field.col-sm-12
+      .new-or-old.btn-group (role='group')
+        .btn.btn-default.btn-xs (ng-click='makeNewLocation = true'
+          ng-class="makeNewLocation ? 'btn-default' : 'btn-primary'") NEW
+        .btn.btn-default.btn-xs (ng-click='makeNewLocation = false'
+          ng-class="makeNewLocation ? 'btn-primary' : 'btn-default'") OLD
 
-    .new (ng-if='makeNewLocation')
-      location-form (location='newLocation'
-        after-save="afterNewLocationSave(location)")
+      .new (ng-if='makeNewLocation')
+        label (for='location') Location
+        location-form (location='newLocation'
+          after-save="afterNewLocationSave(location)")
 
-    .old (ng-if='!makeNewLocation')
-      label> (for='location') Location
-      select (name='location' ng-model='unit.location'
-        ng-options="location as location.label() for location in locations track by location.id")
+      .old.form-group (ng-if='!makeNewLocation' ng-class="{'has-error': \
+        locationFns.invalid(), 'has-success': locationFns.valid()}")
+        label.control-label (for='location') Location
+        select.form-control (name='location' ng-model='unit.location'
+          ng-options="location as location.label() for location in locations track by location.id")
 
-  .bottling-date-field
-    label> (for='bottling_date') Bottled
-    input (name='bottling_date' type='date' ng-model='unit.bottling_date')
+  .row
+    .bottling-date-field.form-group.col-sm-6.col-md-4.col-lg-3 (ng-class="{'has-error': \
+      bottlingDateFns.invalid(), 'has-success': bottlingDateFns.valid()}")
+      label.control-label (for='bottling_date') Bottled
+      input.form-control (name='bottling_date' type='date' ng-model='unit.bottling_date')
 
-  .purchase-date-field
-    label> (for='purchase_date') Purchased
-    input (name='purchase_date' type='date' ng-model='unit.purchase_date')
+    .purchase-date-field.form-group.col-sm-6.col-md-4.col-lg-3 (ng-class="{'has-error': \
+      purchaseDateFns.invalid(), 'has-success': purchaseDateFns.valid()}")
+      label.control-label (for='purchase_date') Purchased
+      input.form-control (name='purchase_date' type='date' ng-model='unit.purchase_date')
 
-  .best-by-date-field
-    label> (for='best_by_date') Best By
-    input (name='best_by_date' type='date' ng-model='unit.best_by_date')
+    .best-by-date-field.form-group.col-sm-6.col-md-4.col-lg-3 (ng-class="{'has-error': \
+      bestByDateFns.invalid(), 'has-success': bestByDateFns.valid()}")
+      label.control-label (for='best_by_date') Best By
+      input.form-control (name='best_by_date' type='date' ng-model='unit.best_by_date')
 
-  .quantity-field
-    label> (for='quantity') Quantity
-    input (name='quantity' type='number' ng-model='quantity')
-    label.error< (for='quantity' ng-if='quantityFns.number()') Must be a number
+    .quantity-field.form-group.col-sm-6.col-md-12.col-lg-3 (ng-class="{'has-error': \
+      quantityFns.invalid(), 'has-success': quantityFns.valid()}")
+      label.control-label (for='quantity') Quantity
+      input.form-control (name='quantity' type='number' ng-model='quantity'
+        required min='1' max='100')
+      label.control-label.error (for='quantity' ng-if='quantityFns.required()') Must be a number
+      label.control-label.error (for='quantity' ng-if='quantityFns.number()') Must be a number
+      label.control-label.error (for='quantity' ng-if='quantityFns.min()') Must be 1 or more
+      label.control-label.error (for='quantity' ng-if='quantityFns.max()') Must be 100 or fewer
 
-  .submit
-    input (type='submit' value='Save Unit' ng-disabled='unitForm.$invalid')
+
+
+  .submit.form-group
+    input.btn.btn-primary.btn-block (type='submit' value='Save Unit' ng-disabled='unitForm.$invalid')
+
+.identifiers-area (ng-if='showNewIdentifiers')
+  ul.identifiers.list-group
+    li.identifier.list-group-item (ng-repeat='unit in newUnits track by unit.id')
+      span.badge {{ unit.identifier }}
+      ' {{ unit.sticker_color }}
+
+  .btn.btn-primary (ng-click='dismissIdentifiers()') Dismiss Identifiers

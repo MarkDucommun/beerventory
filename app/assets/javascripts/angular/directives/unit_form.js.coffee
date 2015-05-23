@@ -38,14 +38,46 @@
         alert('ERROR: NOT A UNIT') if scope.unit.constructor.name != 'Unit'
 
       scope.$watch 'unitForm', ->
-        scope.beer =
-          required: -> Validations.required(scope.unitForm.beer)
+        scope.beerFns = Validations.createFns scope.unitForm.beer, [
+          'required'
+          'valid'
+          'invalid'
+        ]
 
-        scope.container =
-          required: -> Validations.required(scope.unitForm.container)
+        scope.containerFns = Validations.createFns scope.unitForm.container, [
+          'required'
+          'valid'
+          'invalid'
+        ]
 
-        scope.quantityFns =
-          number: -> Validations.number(scope.unitForm.quantity)
+        scope.locationFns = Validations.createFns scope.unitForm.location, [
+          'valid'
+          'invalid'
+        ]
+
+        scope.bottlingDateFns = Validations.createFns scope.unitForm.bottling_date, [
+          'valid'
+          'invalid'
+        ]
+
+        scope.purchaseDateFns = Validations.createFns scope.unitForm.purchase_date, [
+          'valid'
+          'invalid'
+        ]
+
+        scope.bestByDateFns = Validations.createFns scope.unitForm.best_by_date, [
+          'valid'
+          'invalid'
+        ]
+
+        scope.quantityFns = Validations.createFns scope.unitForm.quantity, [
+          'required'
+          'number'
+          'min'
+          'max'
+          'valid'
+          'invalid'
+        ]
 
       scope.afterNewBeerSave = (beer) ->
         scope.beers.push(beer)
