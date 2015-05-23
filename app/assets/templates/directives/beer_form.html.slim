@@ -5,10 +5,18 @@ form (name='beerForm' ng-submit='saveBeerForm()' novalidate)
     label.error< (for='name' ng-if='name.required()') Required
 
   .brewery-field
-    label> (form='brewery') Brewery
-    select (name='brewery' ng-model='beer.brewery' required
-      ng-options="brewery as brewery.name for brewery in breweries track by brewery.id")
-    label.error< (for='brewery' ng-if='brewery.required()') Required
+    .new-or-old
+      .button (ng-click='makeNewBrewery = true') Enter a new brewery
+      .button (ng-click='makeNewBrewery = false') Use an old brewery
+
+    .new (ng-if='makeNewBrewery')
+      brewery-form (brewery='newBrewery' after-save='afterNewBrewerySave(brewery)')
+
+    .old (ng-if='!makeNewBrewery')
+      label> (form='brewery') Brewery
+      select (name='brewery' ng-model='beer.brewery' required
+        ng-options="brewery as brewery.name for brewery in breweries track by brewery.id")
+      label.error< (for='brewery' ng-if='brewery.required()') Required
 
   .submit
     input (type='submit' value='Save Beer' ng-disabled='beerForm.$invalid')

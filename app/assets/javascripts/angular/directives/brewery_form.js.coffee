@@ -12,8 +12,7 @@
 
     scope.$watch 'breweryForm', ->
       scope.name =
-        field: scope.breweryForm.name
-        required: -> Validations.required(this.field)
+        required: -> Validations.required(scope.breweryForm.name)
 
     scope.saveBreweryForm = ->
       scope.brewery.save().then (brewery) ->

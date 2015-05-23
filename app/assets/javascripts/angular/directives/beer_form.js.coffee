@@ -8,6 +8,10 @@
     afterSave: '&'
   templateUrl: 'directives/beer_form.html'
   link: (scope, element, attrs) ->
+    scope.breweries = []
+    scope.makeNewBrewery = false
+    scope.newBrewery = Brewery.new()
+
     Brewery.index().then (breweries) ->
       scope.breweries = breweries
 
@@ -16,14 +20,18 @@
 
     scope.$watch 'beerForm', ->
       scope.name =
-        field: scope.beerForm.name
-        required: -> Validations.required(this.field)
+        required: -> Validations.required(scope.beerForm.name)
 
       scope.brewery =
-        field: scope.beerForm.brewery
-        required: -> Validations.required(this.field)
+        required: -> Validations.required(scope.beerForm.brewery)
 
     scope.saveBeerForm = ->
       scope.beer.save().then (beer) ->
         scope.afterSave(beer: beer)
       scope.beerForm.$setPristine
+
+    scope.afterNewBrewerySave = (brewery) ->
+      scope.breweries.push(brewery)
+      scope.beer.brewery = brewery
+      scope.makeNewBrewery = false
+      scope.newBrewery = Brewery.new()
