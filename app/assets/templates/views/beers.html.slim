@@ -4,5 +4,5 @@
 
 #all-beers
   h2 Beers
-  div (ng-repeat='beer in beers')
+  div (ng-repeat='beer in beers | orderBy:"name":true')
     beer (instance='beer' delete='deleteBeer(beer)')
