@@ -1,20 +1,46 @@
 form (name='unitForm' ng-submit='saveUnitForm()' novalidate)
   .beer-field
-    label> (for='beer') Beer
-    select (name='beer' ng-model='unit.beer' required
-      ng-options="beer as beer.label() for beer in beers track by beer.id")
-    label.error< (for='beer' ng-if='beer.required()') Required
+    .new-or-old
+      .button (ng-click='makeNewBeer = true') Enter a new beer
+      .button (ng-click='makeNewBeer = false') Use an old beer
+
+    .new (ng-if='makeNewBeer')
+      beer-form (beer='newBeer' after-save='afterNewBeerSave(beer)')
+
+    .old (ng-if='!makeNewBeer')
+      label> (for='beer') Beer
+      select (name='beer' ng-model='unit.beer' required
+        ng-options="beer as beer.label() for beer in beers track by beer.id")
+      label.error< (for='beer' ng-if='beer.required()') Required
 
   .container-field
-    label> (for='container') Container
-    select (name='container' ng-model='unit.container' required
-      ng-options="container as container.label() for container in containers track by container.id")
-    label.error< (for='container' ng-if='container.required()') Required
+    .new-or-old
+      .button (ng-click='makeNewContainer = true') Enter a new container
+      .button (ng-click='makeNewContainer = false') Use an old container
+
+    .new (ng-if='makeNewContainer')
+      container-form (container='newContainer'
+        after-save="afterNewContainerSave(container)")
+
+    .old (ng-if='!makeNewContainer')
+      label> (for='container') Container
+      select (name='container' ng-model='unit.container' required
+        ng-options="container as container.label() for container in containers track by container.id")
+      label.error< (for='container' ng-if='container.required()') Required
 
   .location-field
-    label> (for='location') Location
-    select (name='location' ng-model='unit.location'
-      ng-options="location as location.label() for location in locations track by location.id")
+    .new-or-old
+      .button (ng-click='makeNewLocation = true') Enter a new location
+      .button (ng-click='makeNewLocation = false') Use an old location
+
+    .new (ng-if='makeNewLocation')
+      location-form (location='newLocation'
+        after-save="afterNewLocationSave(location)")
+
+    .old (ng-if='!makeNewLocation')
+      label> (for='location') Location
+      select (name='location' ng-model='unit.location'
+        ng-options="location as location.label() for location in locations track by location.id")
 
   .bottling-date-field
     label> (for='bottling_date') Bottled

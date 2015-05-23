@@ -10,9 +10,17 @@
     afterSave: '&'
   templateUrl: 'directives/unit_form.html'
   link: (scope, element, attrs) ->
+      scope.makeNewBeer = false
+      scope.makeNewContainer = false
+      scope.makeNewLocation = false
+
       scope.beers = []
       scope.containers = []
       scope.location = []
+
+      scope.newBeer = Beer.new()
+      scope.newContainer = Container.new()
+      scope.newLocation = Location.new()
 
       Beer.index().then (beers) ->
         scope.beers = beers
@@ -28,12 +36,28 @@
 
       scope.$watch 'unitForm', ->
         scope.beer =
-          field: scope.unitForm.beer
-          required: -> Validations.required(this.field)
+          required: -> Validations.required(scope.unitForm.beer)
 
         scope.container =
-          field: scope.unitForm.container
-          required: -> Validations.required(this.field)
+          required: -> Validations.required(scope.unitForm.container)
+
+      scope.afterNewBeerSave = (beer) ->
+        scope.beers.push(beer)
+        scope.unit.beer = beer
+        scope.makeNewBeer = false
+        scope.newBeer = Beer.new()
+
+      scope.afterNewContainerSave = (container) ->
+        scope.containers.push(container)
+        scope.unit.container = container
+        scope.makeNewContainer = false
+        scope.newContainer = Container.new()
+
+      scope.afterNewLocationSave = (location) ->
+        scope.locations.push(location)
+        scope.unit.location = location
+        scope.makeNewLocation = false
+        scope.newLocation = Location.new()
 
       scope.saveUnitForm = ->
         scope.unit.save().then (unit) ->
