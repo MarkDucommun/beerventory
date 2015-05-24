@@ -20,8 +20,7 @@ div (ng-cloak)
       .best-by-date (ng-if='unit.best_by_date')
         span Best By: {{ unit.best_by_date | date: 'MMM d, yyyy' }}
 
-      .note (ng-if='unit.note')
-        p {{ unit.note }}
+      .note (ng-if='unit.note') {{ unit.note }}
 
   div (ng-if='state.editing')
     unit-form (unit='unit' after-save='afterSave(unit)')

@@ -71,7 +71,8 @@ form (name='unitForm' ng-submit='saveUnitForm()' novalidate ng-cloak)
       input.form-control (name='best_by_date' type='date' ng-model='unit.best_by_date')
 
     .quantity-field.form-group.col-sm-6.col-md-12 (ng-class="{'has-error': \
-      quantityFns.invalid(), 'has-success': quantityFns.valid()}")
+      quantityFns.invalid(), 'has-success': quantityFns.valid()}"
+      ng-if="!unit.id")
       label.control-label (for='quantity') Quantity
       input.form-control (name='quantity' type='number' ng-model='quantity'
         required min='1' max='100')
