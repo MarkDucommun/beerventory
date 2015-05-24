@@ -35,6 +35,10 @@
     templateUrl: 'views/units.html'
     controller: 'UnitsController'
 
+  $routeProvider.when '/units/:id',
+    templateUrl: 'views/units.html'
+    controller: 'UnitsController'
+
   $routeProvider.otherwise
     redirectTo: '/beers'
 

@@ -35,7 +35,7 @@
         scope.locations = locations
 
       scope.$watch 'unit', ->
-        alert('ERROR: NOT A UNIT') if scope.unit.constructor.name != 'Unit'
+        alert('ERROR: NOT A UNIT') if scope.unit && scope.unit.constructor.name != 'Unit'
 
       scope.$watch 'unitForm', ->
         scope.beerFns = Validations.createFns scope.unitForm.beer, [

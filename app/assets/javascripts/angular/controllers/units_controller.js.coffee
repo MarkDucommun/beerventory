@@ -1,15 +1,20 @@
 @beerventory.controller 'UnitsController', (
   $scope,
+  $routeParams,
   Unit
 ) ->
 
-  $scope.setTab('units')
-
   $scope.units = []
 
-  $scope.unit = Unit.new()
-
   Unit.index().then (units) -> $scope.units = units
+
+  $scope.setTab('units')
+
+  if $routeParams.id
+    Unit.find($routeParams.id).then (unit) ->
+      $scope.unit = unit
+  else
+    $scope.unit = Unit.new()
 
   $scope.newUnit = -> $scope.unit = Unit.new()
 

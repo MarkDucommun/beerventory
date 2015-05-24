@@ -3,7 +3,7 @@
     h2
       span Unit
       .btn-group.pull-right
-        button.btn.btn-default (ng-click='newUnit()') NEW UNIT
+        a.btn.btn-default (href='units') NEW UNIT
         button.btn.btn-default (ng-click='deleteUnit(unit)' ng-if="unit.id") DELETE UNIT
 
     unit-form (unit='unit' after-save='afterSave(unit)')
@@ -27,9 +27,9 @@
             ' Reverse
     .form-group
       input.form-control (name='filter' type='text' ng-model='filterText')
-    ul.list-group
-      .list-group-item (ng-repeat='unit in units | orderBy:order:reverse | filter:filterText'
-        ng-click="editUnit(unit)")
+    .list-group.unit-list
+      a.list-group-item (ng-repeat='unit in units | orderBy:order:reverse | filter:filterText'
+        href="units/{{unit.id}}")
         span.badge (ng-class='unit.sticker_color') {{ unit.identifier }}
         p {{ unit.beer.name }}
         p {{ unit.beer.brewery.label() }}
