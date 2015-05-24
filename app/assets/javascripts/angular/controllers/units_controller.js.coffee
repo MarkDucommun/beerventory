@@ -9,8 +9,7 @@
 
   $scope.unit = Unit.new()
 
-  Unit.index().then (units) ->
-    $scope.units = units
+  Unit.index().then (units) -> $scope.units = units
 
   $scope.newUnit = -> $scope.unit = Unit.new()
 

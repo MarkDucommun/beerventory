@@ -33,15 +33,19 @@ form (name='unitForm' ng-submit='saveUnitForm()' novalidate ng-cloak)
         containerFns.invalid(), 'has-success': containerFns.valid()}")
         label.control-label (for='container') Container
         select.form-control (name='container' ng-model='unit.container' required
-          ng-options="container as container.label() for container in containers track by container.id")
-        label.control-label.error (for='container' ng-if='containerFns.required()') Required
+          ng-options="container as container.label() for container in containers \
+            track by container.id")
+        label.control-label.error (for='container' ng-if='containerFns.required()')
+          ' Required
 
     .location-field.col-sm-12
       .new-or-old.btn-group (role='group')
         .btn.btn-default.btn-xs (ng-click='makeNewLocation = true'
-          ng-class="{'btn-primary': makeNewLocation, 'btn-default': !makeNewLocation}") NEW
+          ng-class="{'btn-primary': makeNewLocation, 'btn-default': !makeNewLocation}")
+          ' NEW
         .btn.btn-default.btn-xs (ng-click='makeNewLocation = false'
-          ng-class="{'btn-default': makeNewLocation, 'btn-primary': !makeNewLocation}") OLD
+          ng-class="{'btn-default': makeNewLocation, 'btn-primary': !makeNewLocation}")
+          ' OLD
 
       .new (ng-if='makeNewLocation')
         label (for='location') Location
@@ -52,7 +56,8 @@ form (name='unitForm' ng-submit='saveUnitForm()' novalidate ng-cloak)
         locationFns.invalid(), 'has-success': locationFns.valid()}")
         label.control-label (for='location') Location
         select.form-control (name='location' ng-model='unit.location'
-          ng-options="location as location.label() for location in locations track by location.id")
+          ng-options="location as location.label() for location in locations \
+            track by location.id")
 
   .row
     .bottling-date-field.form-group.col-sm-6.col-md-4 (ng-class="{'has-error': \
@@ -76,10 +81,14 @@ form (name='unitForm' ng-submit='saveUnitForm()' novalidate ng-cloak)
       label.control-label (for='quantity') Quantity
       input.form-control (name='quantity' type='number' ng-model='quantity'
         required min='1' max='100')
-      label.control-label.error (for='quantity' ng-if='quantityFns.required()') Must be a number
-      label.control-label.error (for='quantity' ng-if='quantityFns.number()') Must be a number
-      label.control-label.error (for='quantity' ng-if='quantityFns.min()') Must be 1 or more
-      label.control-label.error (for='quantity' ng-if='quantityFns.max()') Must be 100 or fewer
+      label.control-label.error (for='quantity' ng-if='quantityFns.required()')
+        ' Must be a number
+      label.control-label.error (for='quantity' ng-if='quantityFns.number()')
+        ' Must be a number
+      label.control-label.error (for='quantity' ng-if='quantityFns.min()')
+        ' Must be 1 or more
+      label.control-label.error (for='quantity' ng-if='quantityFns.max()')
+        ' Must be 100 or fewer
 
   .row
     .note-field.form-group.col-xs-12 (ng-class="{'has-error': noteFns.invalid(), \
@@ -88,11 +97,13 @@ form (name='unitForm' ng-submit='saveUnitForm()' novalidate ng-cloak)
       textarea.form-control (name='note' ng-model='unit.note')
 
   .submit.form-group
-    input.btn.btn-primary.btn-block (type='submit' value='Save Unit' ng-disabled='unitForm.$invalid')
+    input.btn.btn-primary.btn-block (type='submit' value='Save Unit'
+      ng-disabled="unitForm.$invalid")
 
 .identifiers-area (ng-if='showNewIdentifiers')
   ul.identifiers.list-group
-    li.identifier.list-group-item (ng-repeat="unit in newUnits | orderBy:'sticker_color'"
+    li.identifier.list-group-item (ng-repeat="unit in newUnits | \
+      orderBy:'sticker_color'"
       ng-class="unit.sticker_color")
       h4 {{ unit.identifier }}
 
