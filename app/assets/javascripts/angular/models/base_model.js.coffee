@@ -22,7 +22,7 @@
       packet = {}
       packet[this.constructor.type_single()] = this.getPacket()
 
-      this.constructor.getRecordPromise ->
+      return this.constructor.getRecordPromise ->
         if id
           BeerventoryApi.put([type_plural, id], packet)
         else
@@ -32,13 +32,24 @@
       id = this.id
       type_plural = this.constructor.type_plural()
       LocalCollection.delete(this)
-      this.constructor.getRecordPromise ->
+      return this.constructor.getRecordPromise ->
         BeerventoryApi.delete([type_plural, id])
 
-    @index: (queryParams) ->
+    @index: (queryParams, useCache = true) ->
       type_plural = this.type_plural()
-      this.getCollectionPromise ->
-        BeerventoryApi.get([type_plural], queryParams)
+      if useCache && local_promise = LocalCollection.getCollection(type_plural)
+        return local_promise
+      else
+        return this.getCollectionPromise ->
+          BeerventoryApi.get([type_plural], queryParams)
+
+    @find: (id, useCache = true) ->
+      type_plural = this.type_plural()
+      if useCache && local_promise = LocalCollection.get(id, type_plural)
+        return local_promise
+      else
+        return this.getRecordPromise ->
+          BeerventoryApi.get([type_plural, id])
 
     @new: (args) -> new this(args)
 
