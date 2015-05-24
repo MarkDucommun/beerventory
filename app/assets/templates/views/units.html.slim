@@ -5,5 +5,5 @@
 
   #all-unit.col-md-5
     h2 Units
-    div (ng-repeat='unit in units track by unit.id')
+    div (ng-repeat='unit in units | orderBy:"id"')
       unit (instance='unit' delete='deleteUnit(unit)')

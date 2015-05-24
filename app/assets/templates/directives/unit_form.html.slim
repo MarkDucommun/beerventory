@@ -91,8 +91,8 @@ form (name='unitForm' ng-submit='saveUnitForm()' novalidate ng-cloak)
 
 .identifiers-area (ng-if='showNewIdentifiers')
   ul.identifiers.list-group
-    li.identifier.list-group-item (ng-repeat='unit in newUnits track by unit.id')
-      span.badge {{ unit.identifier }}
-      ' {{ unit.sticker_color }}
+    li.identifier.list-group-item (ng-repeat="unit in newUnits | orderBy:'sticker_color'"
+      ng-class="unit.sticker_color")
+      h4 {{ unit.identifier }}
 
   .btn.btn-primary (ng-click='dismissIdentifiers()') Dismiss Identifiers
