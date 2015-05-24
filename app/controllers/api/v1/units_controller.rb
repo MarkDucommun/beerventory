@@ -5,6 +5,10 @@ class Api::V1::UnitsController < Api::V1::ApiController
     render json: Unit.all
   end
 
+  def show
+    render json: unit
+  end
+
   def create
     render json: Unit.create(unit_params)
   end

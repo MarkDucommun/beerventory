@@ -10,6 +10,15 @@ describe Api::V1::UnitsController do
     end
   end
 
+  describe '#show' do
+    it 'returns the unit record' do
+      unit = create(:unit)
+      get :show, id: unit.id
+      unit_hash = parse_json_response_body(response).fetch(:unit)
+      expect(unit_hash[:id]).to be unit.id
+    end
+  end
+
   describe '#create' do
     let!(:beer) { create(:beer) }
     let!(:container) { create(:container) }
