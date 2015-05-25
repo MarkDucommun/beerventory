@@ -16,7 +16,7 @@ form (name='unitForm' ng-submit='saveUnitForm()' ng-hide="showNewIdentifiers"
         beerFns.invalid(), 'has-success': beerFns.valid()}")
         label.control-label (for='beer') Beer
         select.form-control (name='beer' ng-model='unit.beer' required
-          ng-options="beer as beer.label() for beer in beers track by beer.id")
+          ng-options="beer as beer.label() for beer in beers | orderBy:'name'")
         label.control-label.error (for='beer' ng-if='beerFns.required()') Required
 
     .container-field.col-sm-12
@@ -35,7 +35,7 @@ form (name='unitForm' ng-submit='saveUnitForm()' ng-hide="showNewIdentifiers"
         label.control-label (for='container') Container
         select.form-control (name='container' ng-model='unit.container' required
           ng-options="container as container.label() for container in containers \
-            track by container.id")
+            | orderBy:'volume_in_ml'")
         label.control-label.error (for='container' ng-if='containerFns.required()')
           ' Required
 
@@ -58,7 +58,7 @@ form (name='unitForm' ng-submit='saveUnitForm()' ng-hide="showNewIdentifiers"
         label.control-label (for='location') Location
         select.form-control (name='location' ng-model='unit.location'
           ng-options="location as location.label() for location in locations \
-            track by location.id")
+            | orderBy:'label()'")
 
   .row
     .bottling-date-field.form-group.col-sm-6.col-md-4 (ng-class="{'has-error': \
