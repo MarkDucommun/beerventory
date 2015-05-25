@@ -14,9 +14,9 @@
       this.purchase_date = new Date(args.purchase_date) if args.purchase_date
       this.best_by_date = new Date(args.best_by_date) if args.best_by_date
       this.note = args.note
-      this.beer = Beer.new(args.beer)
-      this.container = Container.new(args.container)
-      this.location = Location.new(args.location)
+      this.beer = Beer.new(args.beer) if args.beer
+      this.container = Container.new(args.container) if args.container
+      this.location = Location.new(args.location) if args.location
       super(args)
 
     getPacket: ->
