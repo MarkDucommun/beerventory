@@ -15,8 +15,13 @@ form (name='unitForm' ng-submit='saveUnitForm()' ng-hide="showNewIdentifiers"
       .old.form-group (ng-if='!makeNewBeer' ng-class="{'has-error': \
         beerFns.invalid(), 'has-success': beerFns.valid()}")
         label.control-label (for='beer') Beer
-        select.form-control (name='beer' ng-model='unit.beer' required
-          ng-options="beer as beer.label() for beer in beers | orderBy:'name'")
+        ui-select (name='beer' ng-model='unit.beer')
+          ui-select-match (placeholder='Enter a beer name...')
+            span> {{ $select.selected.name }}
+            small - {{ $select.selected.brewery.name }}
+          ui-select-choices (repeat='beer in beers | filter: $select.search | orderBy:"name"')
+            span> {{ beer.name }}
+            small - {{ beer.brewery.name }}
         label.control-label.error (for='beer' ng-if='beerFns.required()') Required
 
     .container-field.col-sm-12

@@ -1,13 +1,15 @@
 @beerventory = angular.module 'beerventory', [
-  'ngResource',
-  'ngRoute',
-  'angular-underscore',
+  'ngResource'
+  'ngRoute'
+  'angular-underscore'
   'templates'
+  'ui.select'
 ]
 
 @beerventory.config (
   $routeProvider,
-  $locationProvider
+  $locationProvider,
+  uiSelectConfig
 ) ->
 
   # Handle Rails attempting to reload page
@@ -42,4 +44,6 @@
   $routeProvider.otherwise
     redirectTo: '/beers'
 
-  $locationProvider.html5Mode(true);
+  $locationProvider.html5Mode(true)
+
+  uiSelectConfig.theme = 'bootstrap'

@@ -7,6 +7,7 @@
     "angular": "latest",
     "angular-resource": "latest",
     "angular-route": "latest",
-    "angular-underscore": "latest"
+    "angular-underscore": "latest",
+    "angular-ui-select": "latest"
   }
 }
