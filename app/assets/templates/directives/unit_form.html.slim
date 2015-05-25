@@ -15,7 +15,7 @@ form (name='unitForm' ng-submit='saveUnitForm()' ng-hide="showNewIdentifiers"
       .old.form-group (ng-if='!makeNewBeer' ng-class="{'has-error': \
         beerFns.invalid(), 'has-success': beerFns.valid()}")
         label.control-label (for='beer') Beer
-        ui-select (name='beer' ng-model='unit.beer')
+        ui-select (name='beer' ng-model='unit.beer' required)
           ui-select-match (placeholder='Enter a beer name...')
             span> {{ $select.selected.name }}
             small - {{ $select.selected.brewery.name }}
