@@ -103,13 +103,16 @@
         scope.newLocation = Location.new()
 
       scope.saveUnitForm = ->
-        scope.newUnits = []
-        dupUnit = _.extend({}, scope.unit)
-        _.each [1..scope.quantity], ->
-          _.extend({}, dupUnit).save().then (unit) ->
-            scope.newUnits.push(unit)
-            scope.afterSave(unit: unit)
-        scope.showNewIdentifiers = true
+        if scope.unit.id
+          scope.unit.save()
+        else
+          scope.newUnits = []
+          dupUnit = _.extend({}, scope.unit)
+          _.each [1..scope.quantity], ->
+            _.extend({}, dupUnit).save().then (unit) ->
+              scope.newUnits.push(unit)
+              scope.afterSave(unit: unit)
+          scope.showNewIdentifiers = true
         scope.unitForm.$setPristine()
 
       scope.showNewIdentifiers = false
