@@ -2,22 +2,22 @@
   # Validations
 
   required: (field) ->
-    field.$dirty && field.$error.required
+    field.$touched && field.$error.required
 
   number: (field) ->
-    field.$dirty && field.$error.number
+    field.$touched && field.$error.number
 
   min: (field) ->
-    field.$dirty && field.$error.min
+    field.$touched && field.$error.min
 
   max: (field) ->
-    field.$dirty && field.$error.max
+    field.$touched && field.$error.max
 
   valid: (field) ->
-    field.$dirty && field.$valid
+    field.$touched && field.$valid
 
   invalid: (field) ->
-    field.$dirty && field.$invalid
+    field.$touched && field.$invalid
 
   # Other methods
 
