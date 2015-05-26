@@ -90,7 +90,7 @@
         scope.makeNewBeer = false
         scope.newBeer = Beer.new()
         scope.$watch 'unitForm', ->
-          scope.unitForm.container.$setTouched(true)
+          scope.unitForm.beer.$setTouched(true)
 
 
       scope.afterNewContainerSave = (container) ->
@@ -121,7 +121,9 @@
               scope.newUnits.push(unit)
               scope.afterSave(unit: unit)
           scope.showNewIdentifiers = true
-        scope.unitForm.$setPristine()
+        scope.quantity = 1
+        scope.unitForm.$setPristine(true)
+        scope.unitForm.$setUntouched(true)
 
       scope.showNewIdentifiers = false
 
