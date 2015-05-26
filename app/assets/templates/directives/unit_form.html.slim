@@ -66,9 +66,14 @@ form (name='unitForm' ng-submit='saveUnitForm()' ng-hide="showNewIdentifiers"
       .old.form-group (ng-hide='makeNewLocation' ng-class="{'has-error': \
         locationFns.invalid(), 'has-success': locationFns.valid()}")
         label.control-label (for='location') Location
-        select.form-control (name='location' ng-model='unit.location'
-          ng-options="location as location.label() for location in locations \
-            | orderBy:'label()'")
+        ui-select (name='location' ng-model='unit.location')
+          ui-select-match (placeholder='Select a location...')
+            span {{ $select.selected.label() }}
+          ui-select-choices (repeat='location in locations | filter: $select.search \
+            | orderBy:"sticker_color"')
+            span {{ location.description() }}
+            span.badge.pull-right (ng-if='location.identifier'
+              ng-class="location.sticker_color") {{ location.identifier }}
 
   .row
     .bottling-date-field.form-group.col-sm-6.col-md-4 (ng-class="{'has-error': \
