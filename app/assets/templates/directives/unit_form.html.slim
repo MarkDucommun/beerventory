@@ -12,7 +12,7 @@ form (name='unitForm' ng-submit='saveUnitForm()' ng-hide="showNewIdentifiers"
         label (for='beer') Beer
         beer-form (beer='newBeer' after-save='afterNewBeerSave(beer)')
 
-      .old.form-group (ng-if='!makeNewBeer' ng-class="{'has-error': \
+      .old.form-group (ng-hide='makeNewBeer' ng-class="{'has-error': \
         beerFns.invalid(), 'has-success': beerFns.valid()}")
         label.control-label (for='beer') Beer
         ui-select (name='beer' ng-model='unit.beer' required)
@@ -35,7 +35,7 @@ form (name='unitForm' ng-submit='saveUnitForm()' ng-hide="showNewIdentifiers"
         container-form (container='newContainer'
           after-save="afterNewContainerSave(container)")
 
-      .old.form-group (ng-if='!makeNewContainer' ng-class="{'has-error': \
+      .old.form-group (ng-hide='makeNewContainer' ng-class="{'has-error': \
         containerFns.invalid(), 'has-success': containerFns.valid()}")
         label.control-label (for='container') Container
         ui-select (name='container' ng-model='unit.container' required)
@@ -63,7 +63,7 @@ form (name='unitForm' ng-submit='saveUnitForm()' ng-hide="showNewIdentifiers"
         location-form (location='newLocation'
           after-save="afterNewLocationSave(location)")
 
-      .old.form-group (ng-if='!makeNewLocation' ng-class="{'has-error': \
+      .old.form-group (ng-hide='makeNewLocation' ng-class="{'has-error': \
         locationFns.invalid(), 'has-success': locationFns.valid()}")
         label.control-label (for='location') Location
         select.form-control (name='location' ng-model='unit.location'
