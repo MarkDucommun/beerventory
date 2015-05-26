@@ -89,18 +89,26 @@
         scope.unit.beer = beer
         scope.makeNewBeer = false
         scope.newBeer = Beer.new()
+        scope.$watch 'unitForm', ->
+          scope.unitForm.container.$setTouched(true)
+
 
       scope.afterNewContainerSave = (container) ->
         scope.containers.push(container)
         scope.unit.container = container
         scope.makeNewContainer = false
         scope.newContainer = Container.new()
+        scope.$watch 'unitForm', ->
+          scope.unitForm.container.$setTouched(true)
+
 
       scope.afterNewLocationSave = (location) ->
         scope.locations.push(location)
         scope.unit.location = location
         scope.makeNewLocation = false
         scope.newLocation = Location.new()
+        scope.$watch 'unitForm', ->
+          scope.unitForm.location.$setTouched(true)
 
       scope.saveUnitForm = ->
         if scope.unit.id
