@@ -13,10 +13,11 @@
     getPacket: ->
       container: this.container
       room: this.room
-      identifier: this.identifier
+
+    description: -> "#{this.container}, #{this.room}"
 
     label: ->
       if this.identifier
-        "#{this.sticker_color} #{this.identifier} - #{this.container}, #{this.room}"
+        "#{this.sticker_color} #{this.identifier} - #{this.description()}"
       else
-        "#{this.container}, #{this.room}"
+        this.description()
