@@ -26,4 +26,5 @@
     scope.saveLocationForm = ->
       scope.location.save().then (location) ->
         scope.afterSave(location: location)
-      scope.locationForm.$setPristine()
+      scope.locationForm.$setPristine(true)
+      scope.locationForm.$setUntouched(true)

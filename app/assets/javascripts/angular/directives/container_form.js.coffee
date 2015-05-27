@@ -48,4 +48,5 @@
     scope.saveContainerForm = ->
       scope.container.save().then (container) ->
         scope.afterSave(container: container)
-      scope.containerForm.$setPristine()
+      scope.containerForm.$setPristine(true)
+      scope.containerForm.$setUntouched(true)

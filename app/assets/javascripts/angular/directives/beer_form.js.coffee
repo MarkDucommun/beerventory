@@ -34,10 +34,13 @@
     scope.saveBeerForm = ->
       scope.beer.save().then (beer) ->
         scope.afterSave(beer: beer)
-      scope.beerForm.$setPristine
+      scope.beerForm.$setPristine(true)
+      scope.beerForm.$setUntouched(true)
 
     scope.afterNewBrewerySave = (brewery) ->
       scope.breweries.push(brewery)
       scope.beer.brewery = brewery
       scope.makeNewBrewery = false
       scope.newBrewery = Brewery.new()
+      scope.$watch 'beerForm', ->
+        scope.beerForm.brewery.$setTouched(true)

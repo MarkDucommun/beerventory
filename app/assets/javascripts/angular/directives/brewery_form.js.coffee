@@ -30,4 +30,5 @@
     scope.saveBreweryForm = ->
       scope.brewery.save().then (brewery) ->
         scope.afterSave(brewery: brewery)
-      scope.breweryForm.$setPristine()
+      scope.breweryForm.$setPristine(true)
+      scope.breweryForm.$setUntouched(true)
