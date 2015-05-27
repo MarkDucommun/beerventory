@@ -1,0 +1,9 @@
+.row
+  #new-style.col-md-7
+    h2 New style form goes here
+    
+  #all-styles.col-md-5
+    h2 Styles
+    ul.list-group
+      div (ng-repeat='style in styles | orderBy:"name"') 
+        li.list-group-item {{style.name}}

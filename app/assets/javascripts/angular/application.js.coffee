@@ -33,6 +33,10 @@
     templateUrl: 'views/locations.html'
     controller: 'LocationsController'
 
+  $routeProvider.when '/styles',
+    templateUrl: 'views/styles.html'
+    controller: 'StylesController'
+
   $routeProvider.when '/units',
     templateUrl: 'views/units.html'
     controller: 'UnitsController'
