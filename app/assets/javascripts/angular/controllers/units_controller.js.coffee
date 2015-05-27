@@ -16,10 +16,6 @@
   else
     $scope.unit = Unit.new()
 
-  $scope.newUnit = -> $scope.unit = Unit.new()
-
-  $scope.editUnit = (unit) -> $scope.unit = unit
-
   $scope.deleteUnit = (unit) ->
     unit.delete().then (deletedUnit) ->
       $scope.units = _.without($scope.units, _.findWhere($scope.units, id: deletedUnit.id))
