@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :breweries
       resources :containers
       resources :locations
+      resources :styles
       resources :units
     end
   end
