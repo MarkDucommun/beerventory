@@ -1,0 +1,10 @@
+form (name='styleForm' ng-submit='saveStyleForm()' novalidate ng-cloak)
+  .name-field.form-group (ng-class="{'has-error': nameFns.invalid(), \
+    'has-success': nameFns.valid()}")
+    label.control-label> (for='name') Name
+    input.form-control (name='name' type='text' ng-model='style.name' required)
+    label.error.control-label< (for='name' ng-if='nameFns.required()') Required
+    
+  .submit.form-group
+    input.btn.btn-primary.btn-block (type='submit' value='Save Style'
+      ng-disabled="styleForm.$invalid")
