@@ -3,4 +3,5 @@ class BeerSerializer < ActiveModel::Serializer
              :name
 
   has_one :brewery
+  has_one :style
 end

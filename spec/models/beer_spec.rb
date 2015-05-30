@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Beer do
   context 'associations' do
     it { should belong_to :brewery }
+    it { should belong_to :style }
     it { should have_many :units }
   end
 

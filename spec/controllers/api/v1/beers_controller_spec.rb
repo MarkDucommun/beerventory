@@ -13,11 +13,17 @@ describe Api::V1::BeersController do
   describe '#create' do
     let(:name) { 'Beer' }
     let(:brewery) { create(:brewery) }
+    let(:style) { create(:style) }
     let(:required_beer_params) do
       {
         name: name,
         brewery_id: brewery.id
       }
+    end
+    let(:full_beer_params) do
+      required_beer_params.merge(
+        style_id: style.id
+      )
     end
 
     it 'persists a new Beer record' do
@@ -27,11 +33,12 @@ describe Api::V1::BeersController do
     end
 
     it 'returns a serialized version the new Beer record' do
-      post :create,  beer: required_beer_params
+      post :create,  beer: full_beer_params
       beer_hash = parse_json_response_body(response).fetch(:beer)
       expect(beer_hash[:id]).to_not be nil
       expect(beer_hash[:name]).to eq name
       expect(beer_hash[:brewery][:id]).to be brewery.id
+      expect(beer_hash[:style][:id]).to be style.id
     end
   end
 
