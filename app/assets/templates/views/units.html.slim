@@ -11,20 +11,22 @@
   #all-unit.col-md-5
     h2
       .row
-        span.col-xs-12.col-md-2 Units
-        .btn-group.pull-right.col-xs-12.col-md-10
-          button.btn (ng-click="order = 'beer.name'"
+        .btn-group.col-xs-12
+          button.btn (ng-click="setOrder('beer.name')"
             ng-class="order == 'beer.name' ? 'btn-primary' : 'btn-default'")
-            ' Beer
-          button.btn (ng-click="order = 'brewery.name'"
+            span> Beer
+            span.glyphicon (ng-if='order == "beer.name"'
+              ng-class="reverse ? 'glyphicon-triangle-top' : 'glyphicon-triangle-bottom'")
+          button.btn (ng-click="setOrder('brewery.name')"
             ng-class="order == 'brewery.name' ? 'btn-primary' : 'btn-default'")
-            ' Brewery
-          button.btn (ng-click="order = 'bottling_date'"
+            span> Brewery
+            span.glyphicon (ng-if='order == "brewery.name"'
+              ng-class="reverse ? 'glyphicon-triangle-top' : 'glyphicon-triangle-bottom'")
+          button.btn (ng-click="setOrder('bottling_date')"
             ng-class="order == 'bottling_date' ? 'btn-primary' : 'btn-default'")
-            ' Bottling Date
-          button.btn (ng-click="reverse = !reverse"
-            ng-class="reverse ? 'btn-primary' : 'btn-default'")
-            ' Reverse
+            span> Bottling Date
+            span.glyphicon (ng-if='order == "bottling_date"'
+              ng-class="reverse ? 'glyphicon-triangle-top' : 'glyphicon-triangle-bottom'")
     .form-group
       .input-group
         input.form-control (name='filter' type='text' ng-model='filterText')

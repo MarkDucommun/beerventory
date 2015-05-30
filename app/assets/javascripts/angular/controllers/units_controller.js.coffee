@@ -16,6 +16,16 @@
   else
     $scope.unit = Unit.new()
 
+  $scope.reverse = false
+  $scope.order = 'beer.name'
+
+  $scope.setOrder = (arg) ->
+    if $scope.order == arg
+      $scope.reverse = !$scope.reverse
+    else
+      $scope.reverse = false
+      $scope.order = arg
+
   $scope.deleteUnit = (unit) ->
     unit.delete().then (deletedUnit) ->
       $scope.units = _.without($scope.units, _.findWhere($scope.units, id: deletedUnit.id))
