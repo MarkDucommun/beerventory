@@ -14,9 +14,10 @@
 
   addCollection: (collection) ->
     that = this
-    type = collection[0].constructor.type_plural()
-    that.lastCached[type] = Date.now()
-    _.each collection, (object) -> that.add(object)
+    if collection.length > 0
+      type = collection[0].constructor.type_plural()
+      that.lastCached[type] = Date.now()
+      _.each collection, (object) -> that.add(object)
 
   get: (id, type) ->
     id = parseInt(id)
