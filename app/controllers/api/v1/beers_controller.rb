@@ -5,6 +5,10 @@ class Api::V1::BeersController < Api::V1::ApiController
     render json: Beer.all
   end
 
+  def show
+    render json: beer
+  end
+
   def create
     render json: Beer.create(beer_params)
   end

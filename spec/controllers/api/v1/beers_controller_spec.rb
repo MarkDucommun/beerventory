@@ -10,6 +10,15 @@ describe Api::V1::BeersController do
     end
   end
 
+  describe '#show' do
+    it 'returns the beer record' do
+      beer = create(:beer)
+      get :show, id: beer.id
+      beer_hash = parse_json_response_body(response).fetch(:beer)
+      expect(beer_hash[:id]).to be beer.id
+    end
+  end
+
   describe '#create' do
     let(:name) { 'Beer' }
     let(:brewery) { create(:brewery) }
