@@ -1,0 +1,19 @@
+#edit-beer.col-xs-12
+  .show-beer (ng-hide='editing')
+    h2 {{ beer.name }}
+    h3 {{ beer.brewery.name }}
+    h4 {{ beer.brewery.location() }}
+    h4 {{ beer.style.name }}
+    
+    .btn.btn-default (ng-click='editing = true') Edit beer
+  
+  .edit-beer (ng-show='editing')
+    beer-form (beer='beer' afterSave='afterBeerSave()')
+    
+    .btn-group
+      .btn.btn-default (ng-click='editing = false') Cancel editing
+      .btn.btn-default (ng-click='deleteBeer()') Delete beer
+    
+  a (href='/beers')
+    span.glyphicon.glyphicon-arrow-left
+    span< Back to all beers

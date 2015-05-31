@@ -25,7 +25,7 @@
       scope.styles = styles
 
     scope.$watch 'beer', ->
-      alert('ERROR: NOT A BEER') if scope.beer.constructor.name != 'Beer'
+      alert('ERROR: NOT A BEER') if scope.beer && scope.beer.constructor.name != 'Beer'
 
     scope.$watch 'beerForm', ->
       scope.nameFns = Validations.createFns scope.beerForm.name, [

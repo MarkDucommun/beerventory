@@ -27,6 +27,7 @@
         input.form-control (name='filter' type='text' ng-model='filterText')
         span.input-group-addon {{ filtered.length }}
     .list-group.beer-list
-      li.list-group-item (ng-repeat='beer in filtered = (beers | orderBy:order:reverse | filter:filterText)')
+      a.list-group-item (ng-repeat='beer in filtered = (beers | orderBy:order:reverse \
+        | filter:filterText)' href='beer/{{beer.id}}')
         .name {{ beer.name }}
         .brewery {{ beer.brewery.label() }}

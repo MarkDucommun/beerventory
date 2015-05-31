@@ -21,6 +21,10 @@
     templateUrl: 'views/beers.html'
     controller: 'BeersController'
 
+  $routeProvider.when '/beer/:id',
+    templateUrl: 'views/beer.html'
+    controller: 'BeerController'
+
   $routeProvider.when '/breweries',
     templateUrl: 'views/breweries.html'
     controller: 'BreweriesController'

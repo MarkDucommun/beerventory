@@ -1,6 +1,7 @@
 @beerventory.factory 'Beer', (
   BaseModel,
-  Brewery
+  Brewery,
+  Style
 ) ->
 
   class Beer extends BaseModel
