@@ -2,6 +2,8 @@
   #unit.col-md-7
     h2
       span Unit
+      span.badge< (ng-if='unit.identifier' 
+        ng-class="unit.sticker_color") {{ unit.identifier }}
       .btn-group.pull-right
         a.btn.btn-default (href='units') NEW UNIT
         button.btn.btn-default (ng-click='deleteUnit(unit)' ng-if="unit.id") DELETE UNIT
