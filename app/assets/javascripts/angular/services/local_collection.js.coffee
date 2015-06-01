@@ -41,4 +41,5 @@
   delete: (object) ->
     type = object.constructor.type_single()
     collection = this.locals[type]
-    this.locals[type] = _.without(collection, _.findWhere(collection, id: object.id))
+    this.locals[type] = _.filter collection, (cachedObject) ->
+      cachedObject.id != object.id
