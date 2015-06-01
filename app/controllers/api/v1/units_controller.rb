@@ -2,7 +2,11 @@ class Api::V1::UnitsController < Api::V1::ApiController
   expose(:unit)
 
   def index
-    render json: Unit.all
+    if params[:unit]
+      render json: Unit.where(unit_params)
+    else
+      render json: Unit.all
+    end
   end
 
   def show

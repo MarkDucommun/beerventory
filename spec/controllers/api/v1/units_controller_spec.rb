@@ -8,6 +8,18 @@ describe Api::V1::UnitsController do
       units_hash = parse_json_response_body(response).fetch(:units)
       expect(units_hash.length).to be units.length
     end
+
+    it 'can filter by beer id' do
+      beer_a = create(:beer)
+      beer_a_unit_count = 2
+
+      create_list(:unit, beer_a_unit_count, beer: beer_a)
+      create_list(:unit, 2)
+
+      get :index, unit: {beer_id: beer_a.id}
+      units_hash = parse_json_response_body(response).fetch(:units)
+      expect(units_hash.length).to be beer_a_unit_count
+    end
   end
 
   describe '#show' do
