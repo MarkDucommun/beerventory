@@ -2,12 +2,14 @@
   $scope,
   $routeParams,
   $location,
-  Beer
+  Beer,
+  Unit
 ) ->
 
   $scope.setTab('beers')
 
   $scope.beer = null
+  $scope.units = []
 
   $scope.editing = false
 
@@ -17,6 +19,9 @@
 
   Beer.find($routeParams.id).then (beer) ->
     $scope.beer = beer
+
+  Unit.index(unit: {beer_id: $routeParams.id}, false).then (units) ->
+    $scope.units = units
 
   $scope.afterBeerSave = ->
     $scope.editing = false

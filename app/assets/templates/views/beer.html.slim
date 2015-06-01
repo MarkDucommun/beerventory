@@ -1,4 +1,4 @@
-#edit-beer.col-xs-12
+#edit-beer.col-md-7
   .show-beer (ng-hide='editing')
     h2 {{ beer.name }}
     h3 {{ beer.brewery.name }}
@@ -17,3 +17,6 @@
   a (href='/beers')
     span.glyphicon.glyphicon-arrow-left
     span< Back to all beers
+    
+#units.col-md-5
+  units-list (display='units')
