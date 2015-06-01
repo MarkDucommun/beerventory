@@ -1,0 +1,30 @@
+h2
+  .row
+    .btn-group.col-xs-12
+      button.btn (ng-click="setOrder('beer.name')"
+        ng-class="order == 'beer.name' ? 'btn-primary' : 'btn-default'")
+        span> Beer
+        span.glyphicon (ng-if='order == "beer.name"'
+          ng-class="reverse ? 'glyphicon-triangle-top' : 'glyphicon-triangle-bottom'")
+      button.btn (ng-click="setOrder('brewery.name')"
+        ng-class="order == 'brewery.name' ? 'btn-primary' : 'btn-default'")
+        span> Brewery
+        span.glyphicon (ng-if='order == "brewery.name"'
+          ng-class="reverse ? 'glyphicon-triangle-top' : 'glyphicon-triangle-bottom'")
+      button.btn (ng-click="setOrder('bottling_date')"
+        ng-class="order == 'bottling_date' ? 'btn-primary' : 'btn-default'")
+        span> Bottling Date
+        span.glyphicon (ng-if='order == "bottling_date"'
+          ng-class="reverse ? 'glyphicon-triangle-top' : 'glyphicon-triangle-bottom'")
+.form-group
+  .input-group
+    input.form-control (name='filter' type='text' ng-model='filterText')
+    span.input-group-addon {{ filtered.length }}
+.list-group.unit-list
+  a.list-group-item (ng-repeat='unit in filtered = (units | orderBy:order:reverse | filter:filterText) | limitTo:6'
+    href="units/{{unit.id}}")
+    span.badge (ng-class='unit.sticker_color') {{ unit.identifier }}
+    p
+      span {{ unit.beer.name }}
+      span< (ng-if='unit.bottling_date') {{ unit.bottling_date | date:'yyyy' }}
+    p {{ unit.beer.brewery.label() }}
