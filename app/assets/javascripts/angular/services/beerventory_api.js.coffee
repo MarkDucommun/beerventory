@@ -24,7 +24,4 @@
     listClone.join('/')
 
   appendQueryString: (data) ->
-    queryString = '?'
-    angular.forEach data, (value, param) ->
-      queryString += "#{param}=#{value}&"
-    queryString.substring(0, queryString.length - 1)
+    queryString = "?#{$.param(data)}"
