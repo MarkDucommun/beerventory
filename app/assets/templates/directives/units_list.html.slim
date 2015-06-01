@@ -18,3 +18,7 @@ h2
       span {{ unit.beer.name }}
       span< (ng-if='unit.bottling_date') {{ unit.bottling_date | date:'yyyy' }}
     p {{ unit.beer.brewery.label() }}
+    p
+      span.badge (ng-if='unit.location.identifier' 
+        ng-class="unit.location.sticker_color") {{ unit.location.identifier }}
+      span< {{ unit.location.description() }}
