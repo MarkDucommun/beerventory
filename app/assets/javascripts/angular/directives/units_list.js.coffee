@@ -13,3 +13,18 @@
       else
         scope.reverse = false
         scope.order = arg
+
+    scope.buttons = [
+      {
+        label: 'Beer'
+        term: 'beer.name'
+      }
+      {
+        label: 'Brewery'
+        term: 'beer.brewery.name'
+      }
+      {
+        label: 'Bottling Date'
+        term: 'bottling_date'
+      }
+    ]
