@@ -9,6 +9,38 @@ html (lang='en')
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
 
-  body (ng-app='beerventory')
+  body (ng-app='beerventory' ng-controller='ApplicationController')
+    .navbar.navbar-default.navbar-static-top
+      .container
+        .navbar-header
+          a.navbar-brand BEERVENTORY
+
+        button.navbar-toggle (ng-click='navbarCollapsed = !navbarCollapsed')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+
+        .navbar-collapse.collapse.navbar-right (collapse='navbarCollapsed')
+          ul.nav.navbar-nav
+            li (role='presentation' ng-class="{active: tabIs('beers')}")
+              a (href='/beers') Beers
+
+            li (role='presentation' ng-class="{active: tabIs('breweries')}")
+              a (href='/breweries') Breweries
+
+            li (role='presentation' ng-class="{active: tabIs('containers')}")
+              a (href='/containers') Containers
+
+            li (role='presentation' ng-class="{active: tabIs('locations')}")
+              a (href='/locations') Locations
+
+            li (role='presentation' ng-class="{active: tabIs('styles')}")
+              a (href='/styles') Styles
+
+            li (role='presentation' ng-class="{active: tabIs('units')}")
+              a (href='/units') Units
+
     .container
-      = yield
+      .row
+        .col-xs-12
+          ng-view

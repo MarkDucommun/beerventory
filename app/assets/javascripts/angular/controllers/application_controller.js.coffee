@@ -2,6 +2,8 @@
   $scope
 ) ->
 
+  $scope.navbarCollapsed = true
+
   $scope.tab = null
 
   $scope.setTab = (tab) -> $scope.tab = tab
