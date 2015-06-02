@@ -13,9 +13,8 @@
 
   $scope.editing = false
 
-  $scope.pop = ->
-    $scope.editing = true
-    console.log('POP')
+  $scope.edit = (value) ->
+    $scope.editing = value
 
   Beer.find($routeParams.id).then (beer) ->
     $scope.beer = beer
