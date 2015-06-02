@@ -4,9 +4,9 @@
       span Unit
       span.badge< (ng-if='unit.identifier' 
         ng-class="unit.sticker_color") {{ unit.identifier }}
-      .btn-group.pull-right
-        a.btn.btn-default (href='units') NEW UNIT
-        button.btn.btn-default (ng-click='deleteUnit(unit)' ng-if="unit.id") DELETE UNIT
+      .btn-group.pull-right (ng-if="unit.id")
+        a.btn.btn-default (href='/units') NEW UNIT
+        .btn.btn-default (ng-click='openDeleteModal()') DELETE UNIT
 
     unit-form (unit='unit' after-save='afterSave(unit)')
 
