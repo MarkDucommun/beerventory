@@ -2,8 +2,9 @@
   $scope,
   $routeParams,
   $location,
+  $modal,
   Beer,
-  Unit
+  Unit,
 ) ->
 
   $scope.setTab('beers')
@@ -12,6 +13,7 @@
   $scope.units = []
 
   $scope.editing = false
+  $scope.modal = null
 
   $scope.edit = (value) ->
     $scope.editing = value
@@ -28,3 +30,13 @@
   $scope.deleteBeer =  ->
     $scope.beer.delete().then (deletedBeer) ->
       $location.path('/beers')
+      $scope.modal.close('deleted-beer')
+
+  $scope.openDeleteModal = ->
+    $scope.modal = $modal.open
+      templateUrl: 'modals/delete_beer_confirmation.html'
+      scope: $scope
+      size: 'sm'
+
+  $scope.closeDeleteModal = ->
+    $scope.modal.dismiss('cancel')

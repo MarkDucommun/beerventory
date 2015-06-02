@@ -6,7 +6,7 @@
       span< Back to all beers
     .btn.btn-default (ng-if='!editing' ng-click='edit(true)') Edit beer
     .btn.btn-default (ng-if='editing' ng-click='edit(false)') Cancel editing
-    .btn.btn-default (ng-if='editing' ng-click='deleteBeer()') Delete beer
+    .btn.btn-default (ng-if='editing' ng-click='openDeleteModal()') Delete beer
 
   .show-beer (ng-hide='editing' ng-click='editing = true')
     h4 {{ beer.name }}
