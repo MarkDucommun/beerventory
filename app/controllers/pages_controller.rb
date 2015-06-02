@@ -1,3 +1,5 @@
 class PagesController < ApplicationController
-  def index; end
+  def index
+    render file: 'layouts/application', layout: false
+  end
 end
