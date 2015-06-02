@@ -4,6 +4,7 @@
   'angular-underscore'
   'templates'
   'ui.select'
+  'ui.bootstrap'
 ]
 
 @beerventory.config (

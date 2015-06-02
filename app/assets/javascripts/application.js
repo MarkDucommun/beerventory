@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require bootstrap-sass/assets/javascripts/bootstrap-sprockets
 //= require underscore
 //= require angular
 //= require angular-underscore
@@ -19,5 +18,6 @@
 //= require angular-route
 //= require angular-rails-templates
 //= require angular-ui-select/dist/select.min
+//= require angular-bootstrap/ui-bootstrap-tpls.min
 //= require_tree .
 //= require_tree ../templates
