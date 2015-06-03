@@ -22,8 +22,6 @@
   # TODO currently not removing from localCollection I think
   $scope.deleteUnit = ->
     $scope.unit.delete().then (deletedUnit) ->
-      $scope.units = _.filter $scope.units, (unit) ->
-        unit.id != deletedUnit.id
       $scope.modal.close('deleted-unit')
       $location.path('/units')
 
