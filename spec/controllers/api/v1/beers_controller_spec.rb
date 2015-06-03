@@ -8,6 +8,18 @@ describe Api::V1::BeersController do
       beers_hash = parse_json_response_body(response).fetch(:beers)
       expect(beers_hash.length).to be beers.length
     end
+
+    it 'can filter by brewery id' do
+      brewery_a = create(:brewery)
+      brewery_a_beer_count = 2
+
+      create_list(:beer, brewery_a_beer_count, brewery: brewery_a)
+      create_list(:beer, 2)
+
+      get :index, beer: { brewery_id: brewery_a.id }
+      beers_hash = parse_json_response_body(response).fetch(:beers)
+      expect(beers_hash.length).to be brewery_a_beer_count
+    end
   end
 
   describe '#show' do

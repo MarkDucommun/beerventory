@@ -2,7 +2,11 @@ class Api::V1::BeersController < Api::V1::ApiController
   expose(:beer)
 
   def index
-    render json: Beer.all
+    if params[:beer]
+      render json: Beer.where(beer_params)
+    else
+      render json: Beer.all
+    end
   end
 
   def show
