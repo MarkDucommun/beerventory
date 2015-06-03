@@ -1,0 +1,10 @@
+.col-md-7
+  p
+  .btn-group
+    a.btn.btn-default (href='/breweries')
+      span.glyphicon.glyphicon-arrow-left
+      span< Back to all breweries
+  
+  .show-brewery
+    h4 {{ brewery.name }}
+    h4 {{ brewery.location() }}

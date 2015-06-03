@@ -30,6 +30,10 @@
     templateUrl: 'views/breweries.html'
     controller: 'BreweriesController'
 
+  $routeProvider.when '/brewery/:id',
+    templateUrl: 'views/brewery.html'
+    controller: 'BreweryController'
+
   $routeProvider.when '/containers',
     templateUrl: 'views/containers.html'
     controller: 'ContainersController'
