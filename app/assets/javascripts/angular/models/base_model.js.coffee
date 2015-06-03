@@ -31,25 +31,25 @@
     delete: ->
       id = this.id
       type_plural = this.constructor.type_plural()
-      LocalCollection.delete(this)
+      # LocalCollection.delete(this)
       return this.constructor.getRecordPromise ->
         BeerventoryApi.delete([type_plural, id])
 
     @index: (queryParams, useCache = true) ->
       type_plural = this.type_plural()
-      if useCache && local_promise = LocalCollection.getCollection(type_plural)
-        return local_promise
-      else
-        return this.getCollectionPromise ->
-          BeerventoryApi.get([type_plural], queryParams)
+      # if useCache && local_promise = LocalCollection.getCollection(type_plural)
+      #   return local_promise
+      # else
+      return this.getCollectionPromise ->
+        BeerventoryApi.get([type_plural], queryParams)
 
     @find: (id, useCache = true) ->
       type_plural = this.type_plural()
-      if useCache && local_promise = LocalCollection.get(id, type_plural)
-        return local_promise
-      else
-        return this.getRecordPromise ->
-          BeerventoryApi.get([type_plural, id])
+      # if useCache && local_promise = LocalCollection.get(id, type_plural)
+      #   return local_promise
+      # else
+      return this.getRecordPromise ->
+        BeerventoryApi.get([type_plural, id])
 
     @new: (args) -> new this(args)
 
@@ -65,7 +65,7 @@
       deferred = $q.defer()
       success = (response) ->
         instance = constructor.new(response.data[constructor.type_single()])
-        LocalCollection.add(instance)
+        # LocalCollection.add(instance)
         deferred.resolve(instance)
       failure = (response) ->
         deferred.reject(response.data)
@@ -77,7 +77,7 @@
       deferred = $q.defer()
       success = (response) ->
         collection = constructor.newCollection(response.data[constructor.type_plural()])
-        LocalCollection.addCollection(collection)
+        # LocalCollection.addCollection(collection)
         deferred.resolve(collection)
       failure = (response) -> deferred.reject(response.data)
       fn().then(success, failure)
