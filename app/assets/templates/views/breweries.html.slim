@@ -4,6 +4,19 @@
     brewery-form (brewery='newBrewery' after-save='afterSave(brewery)')
 
   #all-breweries.col-md-5
-    h2 Breweries
-    div (ng-repeat='brewery in breweries')
-      brewery (instance='brewery' delete='deleteBrewery(brewery)')
+    h2
+      .sort-buttons.btn-group
+        button.btn (ng-repeat='button in buttons' ng-click='setOrder(button.term)'
+          ng-class="order == button.term ? 'btn-primary' : 'btn-default'")
+          span> {{ button.label }}
+          span.glyphicon (ng-if='order == button.term'
+            ng-class="reverse ? 'glyphicon-triangle-top' : 'glyphicon-triangle-bottom'")
+    .form-group
+      .input-group
+        input.form-control (name='filter' type='text' ng-model='filterText')
+        span.input-group-addon {{ filtered.length }}
+    .list-group.brewery-list
+      a.list-group-item (ng-repeat='brewery in filtered = (breweries | \
+        orderBy:order:reverse | filter:filterText)' href="/brewery/{{brewery.id}}")
+        span {{ brewery.name }}
+        small< (ng-if='brewery.location()') {{ brewery.location() }}
