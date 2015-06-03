@@ -10,6 +10,15 @@ describe Api::V1::BreweriesController do
     end
   end
 
+  describe '#show' do
+    it 'returns the brewery record' do
+      brewery = create(:brewery)
+      get :show, id: brewery.id
+      brewery_hash = parse_json_response_body(response).fetch(:brewery)
+      expect(brewery_hash[:id]).to be brewery.id
+    end
+  end
+
   describe '#create' do
     let(:name) { 'Test Brewery' }
     let(:city) { 'Chicago' }
