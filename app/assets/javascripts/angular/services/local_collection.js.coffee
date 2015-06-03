@@ -39,7 +39,7 @@
       return null
 
   delete: (object) ->
-    type = object.constructor.type_single()
+    type = object.constructor.type_plural()
     collection = this.locals[type]
     this.locals[type] = _.filter collection, (cachedObject) ->
-      cachedObject.id != object.id
+      return cachedObject.id != object.id
