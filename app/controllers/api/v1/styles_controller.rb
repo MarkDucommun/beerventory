@@ -5,6 +5,10 @@ class Api::V1::StylesController < Api::V1::ApiController
     render json: Style.all
   end
 
+  def show
+    render json: style
+  end
+
   def create
     render json: Style.create(style_params)
   end

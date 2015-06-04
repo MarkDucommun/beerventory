@@ -50,6 +50,10 @@
     templateUrl: 'views/styles.html'
     controller: 'StylesController'
 
+  $routeProvider.when '/style/:id',
+    templateUrl: 'views/style.html'
+    controller: 'StyleController'
+
   $routeProvider.when '/units',
     templateUrl: 'views/units.html'
     controller: 'UnitsController'
@@ -59,7 +63,7 @@
     controller: 'UnitsController'
 
   $routeProvider.otherwise
-    redirectTo: '/beers'
+    redirectTo: '/units'
 
   $locationProvider.html5Mode(true)
 

@@ -2,9 +2,10 @@
   #new-style.col-md-7
     h2 Input a new style
     style-form (style='newStyle' after-save='afterSave(style)')
-    
+
   #all-styles.col-md-5
     h2 Styles
-    ul.list-group
-      li.list-group-item (ng-repeat='style in styles | orderBy:"name"')
+    .list-group
+      a.list-group-item (ng-repeat='style in styles | orderBy:"name"'
+        href="style/{{style.id}}")
         ' {{style.name}}

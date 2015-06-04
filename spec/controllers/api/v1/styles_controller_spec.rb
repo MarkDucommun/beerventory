@@ -10,6 +10,15 @@ describe Api::V1::StylesController do
     end
   end
 
+  describe '#show' do
+    it 'returns the style record' do
+      style = create(:style)
+      get :show, id: style.id
+      style_hash = parse_json_response_body(response).fetch(:style)
+      expect(style_hash[:id]).to be style.id
+    end
+  end
+
   describe '#create' do
     let(:name) { 'Style' }
     let(:required_style_params) do

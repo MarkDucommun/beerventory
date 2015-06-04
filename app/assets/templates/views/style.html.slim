@@ -1,0 +1,14 @@
+.col-md-7
+  p 
+  .btn-group
+    a.btn.btn-default (href='/styles')
+      span.glyphicon.glyphicon-arrow-left
+      span< Back to all styles
+    .btn.btn-default (ng-if='!editing' ng-click='edit(true)') Edit beer
+    .btn.btn-default (ng-if='editing' ng-click='edit(false)') Cancel editing
+
+  .show-style (ng-hide='editing')
+    h4 {{ style.name }}
+    
+  .edit-style (ng-show='editing')
+    style-form (style='style' after-save='afterStyleSave()')
