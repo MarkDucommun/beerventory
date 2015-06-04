@@ -5,23 +5,7 @@
 
   #all-beers.col-md-6
     h2
-      .row
-        .btn-group.col-xs-12
-          button.btn.btn-default (ng-click="setOrder('name')"
-            ng-class="order == 'name' ? 'btn-primary' : 'btn-default'")
-            span> Name
-            span.glyphicon (ng-if='order == "name"'
-              ng-class="reverse ? 'glyphicon-triangle-top' : 'glyphicon-triangle-bottom'")
-          button.btn (ng-click="setOrder('brewery.name')"
-            ng-class="order == 'brewery.name' ? 'btn-primary' : 'btn-default'")
-            span> Brewery
-            span.glyphicon (ng-if='order == "brewery.name"'
-              ng-class="reverse ? 'glyphicon-triangle-top' : 'glyphicon-triangle-bottom'")
-          button.btn.btn-default (ng-click="setOrder('style.name')"
-            ng-class="order == 'style.name' ? 'btn-primary' : 'btn-default'")
-            span> Style
-            span.glyphicon (ng-if='order == "style.name"'
-              ng-class="reverse ? 'glyphicon-triangle-top' : 'glyphicon-triangle-bottom'")
+      button-group (buttons='buttons' order='order' reverse='reverse')
     .form-group
       .input-group
         input.form-control (name='filter' type='text' ng-model='filterText')

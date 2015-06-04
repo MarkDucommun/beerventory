@@ -5,12 +5,7 @@
 
   #all-breweries.col-md-5
     h2
-      .sort-buttons.btn-group
-        button.btn (ng-repeat='button in buttons' ng-click='setOrder(button.term)'
-          ng-class="order == button.term ? 'btn-primary' : 'btn-default'")
-          span> {{ button.label }}
-          span.glyphicon (ng-if='order == button.term'
-            ng-class="reverse ? 'glyphicon-triangle-top' : 'glyphicon-triangle-bottom'")
+      button-group (buttons='buttons' order='order' reverse='reverse')
     .form-group
       .input-group
         input.form-control (name='filter' type='text' ng-model='filterText')
