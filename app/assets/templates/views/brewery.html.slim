@@ -18,6 +18,7 @@
 .col-md-5
   h2
     button-group (buttons='buttons' order='order' reverse='reverse')
-  a.list-group-item (ng-repeat="beer in beers | orderBy:order:reverse"
-    href="beer/{{beer.id}}")
-    .name {{ beer.name }}
+  .list-group
+    a.list-group-item (ng-repeat="beer in beers | orderBy:order:reverse"
+      href="beer/{{beer.id}}")
+      .name {{ beer.name }}
