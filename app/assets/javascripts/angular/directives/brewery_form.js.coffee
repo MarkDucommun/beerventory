@@ -8,7 +8,7 @@
   templateUrl: 'directives/brewery_form.html'
   link: (scope, element, attrs) ->
     scope.$watch 'brewery', ->
-      alert('ERROR: NOT A BREWERY') if scope.brewery.constructor.name != 'Brewery'
+      alert('ERROR: NOT A BREWERY') if scope.brewery and scope.brewery.constructor.name != 'Brewery'
 
     scope.$watch 'breweryForm', ->
       scope.nameFns = Validations.createFns scope.breweryForm.name, [

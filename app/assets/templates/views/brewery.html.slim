@@ -4,13 +4,20 @@
     a.btn.btn-default (href='/breweries')
       span.glyphicon.glyphicon-arrow-left
       span< Back to all breweries
+    .btn.btn-default (ng-if='!editing' ng-click='edit(true)') Edit brewery
+    .btn.btn-default (ng-if='editing' ng-click='edit(false)') Cancel editing
+    .btn.btn-default (ng-if='editing' ng-click='openDeleteModal()') Delete brewery
 
-  .show-brewery
+  .show-brewery (ng-hide='editing')
     h4 {{ brewery.name }}
     h4 {{ brewery.location() }}
 
+  .edit-brewery (ng-show='editing')
+    brewery-form (brewery='brewery' after-save='afterBrewerySave()')
+
 .col-md-5
-  h2 Beers
-  a.list-group-item (ng-repeat="beer in beers | orderBy:'name'"
+  h2
+    button-group (buttons='buttons' order='order' reverse='reverse')
+  a.list-group-item (ng-repeat="beer in beers | orderBy:order:reverse"
     href="beer/{{beer.id}}")
     .name {{ beer.name }}
