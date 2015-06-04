@@ -38,6 +38,10 @@
     templateUrl: 'views/containers.html'
     controller: 'ContainersController'
 
+  $routeProvider.when '/containers/:id',
+    templateUrl: 'views/containers.html'
+    controller: 'ContainersController'
+
   $routeProvider.when '/locations',
     templateUrl: 'views/locations.html'
     controller: 'LocationsController'

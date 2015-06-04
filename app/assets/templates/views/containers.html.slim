@@ -1,9 +1,17 @@
 .row
-  #new-container.col-md-7 (ng-controller='NewContainerController')
-    h2 Input a new container
-    container-form (container='newContainer' after-save='afterSave(container)')
+  #new-container.col-md-7
+    h2
+      span Container
+      .btn-group.pull-right
+        a.btn.btn-default (href='containers' ng-if='container.id') New Container
+        .btn.btn-default (ng-click='openDeleteModal()') Delete container
+
+    container-form (container='container' after-save='afterContainerSave(container)')
 
   #all-containers.col-md-5
     h2 Containers
-    div (ng-repeat='container in containers')
-      container (instance='container' delete='deleteContainer(container)')
+    .container-list.list-group
+      a.list-group-item (ng-repeat="container in containers | \
+        orderBy:'volume_in_ml'" href="containers/{{container.id}}")
+        span> (ng-if='container.name') {{ container.name }} -
+        span> {{ container.volume }}{{ container.volume_unit }} {{ container.type }}

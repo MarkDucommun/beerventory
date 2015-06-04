@@ -19,15 +19,15 @@
   else
     $scope.unit = Unit.new()
 
+  $scope.afterSave = (unit) ->
+    $scope.units.push(unit)
+    $scope.unit = Unit.new()
+
   # TODO currently not removing from localCollection I think
   $scope.deleteUnit = ->
     $scope.unit.delete().then (deletedUnit) ->
       $scope.modal.close('deleted-unit')
       $location.path('/units')
-
-  $scope.afterSave = (unit) ->
-    $scope.units.push(unit)
-    $scope.unit = Unit.new()
 
   $scope.openDeleteModal = ->
     $scope.modal = $modal.open

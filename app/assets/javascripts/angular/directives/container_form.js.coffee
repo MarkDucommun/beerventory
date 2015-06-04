@@ -18,7 +18,7 @@
     ]
 
     scope.$watch 'container', ->
-      alert('ERROR: NOT A CONTAINER') if scope.container.constructor.name != 'Container'
+      alert('ERROR: NOT A CONTAINER') if scope.container && scope.container.constructor.name != 'Container'
 
     scope.$watch 'containerForm', ->
       scope.nameFns = Validations.createFns scope.containerForm.name, [
