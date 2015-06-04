@@ -21,7 +21,7 @@
   Beer.find($routeParams.id).then (beer) ->
     $scope.beer = beer
 
-  Unit.index(unit: {beer_id: $routeParams.id}, false).then (units) ->
+  Unit.index(beer_id: $routeParams.id, false).then (units) ->
     $scope.units = units
 
   $scope.afterBeerSave = ->

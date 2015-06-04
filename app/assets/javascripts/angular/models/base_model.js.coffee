@@ -40,8 +40,13 @@
       # if useCache && local_promise = LocalCollection.getCollection(type_plural)
       #   return local_promise
       # else
+      packet = {}
+      packet[this.type_single()] = queryParams
       return this.getCollectionPromise ->
-        BeerventoryApi.get([type_plural], queryParams)
+        if queryParams
+          BeerventoryApi.get([type_plural], packet)
+        else
+          BeerventoryApi.get([type_plural])
 
     @find: (id, useCache = true) ->
       type_plural = this.type_plural()
