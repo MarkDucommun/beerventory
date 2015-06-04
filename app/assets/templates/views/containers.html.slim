@@ -2,8 +2,8 @@
   #new-container.col-md-7
     h2
       span Container
-      .btn-group.pull-right
-        a.btn.btn-default (href='containers' ng-if='container.id') New Container
+      .btn-group.pull-right (ng-if='container.id')
+        a.btn.btn-default (href='containers') New Container
         .btn.btn-default (ng-click='openDeleteModal()') Delete container
 
     container-form (container='container' after-save='afterContainerSave(container)')

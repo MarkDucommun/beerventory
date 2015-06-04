@@ -1,7 +1,7 @@
 .row
   #new-beer.col-md-6
     h2 Input a new beer
-    beer-form (beer='newBeer' after-save='afterSave(beer)')
+    beer-form (beer='newBeer' after-save='afterBeerSave(beer)')
 
   #all-beers.col-md-6
     h2
@@ -14,4 +14,6 @@
       a.list-group-item (ng-repeat='beer in filtered = (beers | orderBy:order:reverse \
         | filter:filterText)' href='beer/{{beer.id}}')
         .name {{ beer.name }}
-        .brewery {{ beer.brewery.label() }}
+        .brewery
+          span {{ beer.brewery.name }}
+          small< (ng-if='beer.brewery.location()') {{ beer.brewery.location() }}
