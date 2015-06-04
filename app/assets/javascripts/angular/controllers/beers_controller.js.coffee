@@ -12,16 +12,24 @@
   Beer.index().then (beers) ->
     $scope.beers = beers
 
+  $scope.afterBeerSave = (beer) ->
+    $scope.beers.push(beer)
+    $scope.newBeer = Beer.new()
+
   $scope.reverse = false
   $scope.order = 'name'
 
-  $scope.setOrder = (arg) ->
-    if $scope.order == arg
-      $scope.reverse = !$scope.reverse
-    else
-      $scope.reverse = false
-      $scope.order = arg
-
-  $scope.afterSave = (beer) ->
-    $scope.beers.push(beer)
-    $scope.newBeer = Beer.new()
+  $scope.buttons = [
+    {
+      label: 'Name'
+      term: 'name'
+    }
+    {
+      label: 'Brewery'
+      term: 'brewery.name'
+    }
+    {
+      label: 'Style'
+      term: 'style.name'
+    }
+  ]
