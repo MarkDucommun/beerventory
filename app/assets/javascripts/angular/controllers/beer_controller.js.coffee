@@ -1,8 +1,8 @@
 @beerventory.controller 'BeerController', (
   $scope,
   $routeParams,
-  $location,
   $modal,
+  $location,
   Beer,
   Unit,
 ) ->
