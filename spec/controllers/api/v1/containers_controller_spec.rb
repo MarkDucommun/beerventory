@@ -10,6 +10,15 @@ describe Api::V1::ContainersController do
     end
   end
 
+  describe '#show' do
+    it 'returns the container record' do
+      container = create(:container)
+      get :show, id: container.id
+      container_hash = parse_json_response_body(response).fetch(:container)
+      expect(container_hash[:id]).to be container.id
+    end
+  end
+
   describe '#create' do
     let(:type) { 'Bottle' }
     let(:volume) { 750 }

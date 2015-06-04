@@ -5,6 +5,10 @@ class Api::V1::ContainersController < Api::V1::ApiController
     render json: Container.all
   end
 
+  def show
+    render json: container
+  end
+
   def create
     render json: Container.create(container_params)
   end
