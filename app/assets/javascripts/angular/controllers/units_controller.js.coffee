@@ -37,3 +37,21 @@
 
   $scope.closeDeleteModal = ->
     $scope.modal.dismiss('cancel')
+
+  $scope.reverse = false
+  $scope.order = 'beer.name'
+
+  $scope.buttons = [
+    {
+      label: 'Beer'
+      term: 'beer.name'
+    }
+    {
+      label: 'Brewery'
+      term: 'beer.brewery.name'
+    }
+    {
+      label: 'Bottling Date'
+      term: 'bottling_date'
+    }
+  ]

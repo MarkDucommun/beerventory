@@ -11,4 +11,21 @@
     unit-form (unit='unit' after-save='afterSave(unit)')
 
   #all-unit.col-md-5
-    units-list (display='units')
+    h2
+      button-group (buttons='buttons' order='order' reverse='reverse')
+    .form-group
+      .input-group
+        input.form-control (name='filter' type='text' ng-model='filterText')
+        span.input-group-addon {{ filtered.length }}
+    .list-group.unit-list
+      a.list-group-item (ng-repeat='unit in filtered = (units | orderBy:order:reverse | filter:filterText)'
+        href="units/{{unit.id}}")
+        span.badge (ng-class='unit.sticker_color') {{ unit.identifier }}
+        p
+          span {{ unit.beer.name }}
+          span< (ng-if='unit.bottling_date') {{ unit.bottling_date | date:'yyyy' }}
+        p {{ unit.beer.brewery.label() }}
+        p
+          span.badge (ng-if='unit.location.identifier'
+            ng-class="unit.location.sticker_color") {{ unit.location.identifier }}
+          span< {{ unit.location.description() }}
