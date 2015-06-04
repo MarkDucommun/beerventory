@@ -8,10 +8,11 @@
     .btn.btn-default (ng-if='editing' ng-click='edit(false)') Cancel editing
     .btn.btn-default (ng-if='editing' ng-click='openDeleteModal()') Delete beer
 
-  .show-beer (ng-hide='editing' ng-click='editing = true')
+  .show-beer (ng-hide='editing')
     h4 {{ beer.name }}
-    h4 {{ beer.brewery.name }}
-    h4 (ng-if='beer.brewery.location()') {{ beer.brewery.location() }}
+    a (href='/brewery/{{beer.brewery.id}}')
+      h4 {{ beer.brewery.name }}
+      h4 (ng-if='beer.brewery.location()') {{ beer.brewery.location() }}
     h4 (ng-if='beer.style') {{ beer.style.name }}
 
   .edit-beer (ng-show='editing')
