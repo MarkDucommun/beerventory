@@ -3,21 +3,26 @@
   $location,
   $modal,
   $routeParams,
+  Beer,
   Style
 ) ->
 
   $scope.setTab('styles')
 
   $scope.style = null
+  $scope.beers = []
 
   $scope.editing = false
   $scope.modal = null
 
-  $scope.edit = (value) ->
-    $scope.editing = value
-
   Style.find($routeParams.id).then (style) ->
     $scope.style = style
+
+  Beer.index(style_id: $routeParams.id).then (beers) ->
+    $scope.beers = beers
+
+  $scope.edit = (value) ->
+    $scope.editing = value
 
   $scope.afterStyleSave = ->
     $scope.editing = false
@@ -35,3 +40,17 @@
 
   $scope.closeDeleteModal = ->
     $scope.modal.dismiss('cancel')
+
+  $scope.reverse = false
+  $scope.order = 'name'
+
+  $scope.buttons = [
+    {
+      label: 'Name'
+      term: 'name'
+    }
+    {
+      label: 'Brewery'
+      term: 'brewery.name'
+    }
+  ]
