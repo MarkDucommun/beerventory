@@ -18,17 +18,18 @@
   .edit-beer (ng-show='editing')
     beer-form (beer='beer' after-save='afterBeerSave()')
 
-.list-group.unit-list.col-md-5
+.col-md-5
   h2 Units
-  a.list-group-item (ng-repeat='unit in units | orderBy:"bottling_date"'
-    href="units/{{unit.id}}")
-    span.badge (ng-class='unit.sticker_color') {{ unit.identifier }}
-    p
-      span< (ng-if='unit.bottling_date')
-        ' {{ unit.bottling_date | date:'MMMM d, yyyy' }}
-      span< (ng-if='!unit.bottling_date && unit.purchase_date')
-        ' {{ unit.purchase_date | date:'MMMM d, yyyy' }} (purchased)
-    p
-      span.badge (ng-if='unit.location.identifier'
-        ng-class="unit.location.sticker_color") {{ unit.location.identifier }}
-      span< {{ unit.location.description() }}
+  .list-group.unit-list
+    a.list-group-item (ng-repeat='unit in units | orderBy:"bottling_date"'
+      href="units/{{unit.id}}")
+      span.badge (ng-class='unit.sticker_color') {{ unit.identifier }}
+      p
+        span< (ng-if='unit.bottling_date')
+          ' {{ unit.bottling_date | date:'MMMM d, yyyy' }}
+        span< (ng-if='!unit.bottling_date && unit.purchase_date')
+          ' {{ unit.purchase_date | date:'MMMM d, yyyy' }} (purchased)
+      p
+        span.badge (ng-if='unit.location.identifier'
+          ng-class="unit.location.sticker_color") {{ unit.location.identifier }}
+        span< {{ unit.location.description() }}
