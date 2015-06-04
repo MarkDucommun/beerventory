@@ -1,0 +1,7 @@
+.sort-buttons.btn-group
+  button.btn (ng-repeat='button in buttons' ng-click='setOrder(button.term)'
+    ng-class="order == button.term ? 'btn-primary' : 'btn-default'")
+    span> {{ button.label }}
+    i.fa (ng-class="{'fa-sort': sort(button.term), \
+                     'fa-sort-desc': sortDesc(button.term),
+                     'fa-sort-asc': sortAsc(button.term)}")

@@ -19,6 +19,9 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'ngannotate-rails'
 gem 'angular-rails-templates', '0.2'
 
+# font icons
+gem 'font-awesome-sass'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
